@@ -1,0 +1,46 @@
+.container {
+  max-width: 500px;
+  h1 {
+    font-weight: 700;
+    font-size: 28px;
+  }
+  .form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    label {
+      font-weight: 600;
+      font-size: 18px;
+    }
+    input {
+      border: 1px solid gray;
+      border-radius: 10px;
+      padding: 0px 5px;
+      height: 40px;
+    }
+  }
+  .logOut {
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 100%;
+    background-color: rgba(231, 176, 118, 0.24);
+    color: var(--color-highlight);
+    font-weight: 500;
+    padding: 5px 0;
+    &:active {
+      scale: 0.98;
+    }
+  }
+  .Save {
+    border-radius: 10px;
+    padding: 5px 0;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    background-color: var(--color-highlight);
+    &:active {
+      scale: 0.98;
+    }
+  }
+}

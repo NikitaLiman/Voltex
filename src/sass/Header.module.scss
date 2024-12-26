@@ -1,0 +1,253 @@
+.container {
+  .cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 32px 0;
+    border-bottom: solid 1px black;
+
+    &__LogoBlock {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      max-width: 700px;
+      width: 100%;
+      padding: 5px 30px;
+      border-radius: 5px;
+      &__Text {
+        h1 {
+          color: white;
+          font-weight: 900;
+        }
+        p {
+          color: gray;
+          opacity: 0.9;
+          font-size: 14px;
+        }
+      }
+    }
+    .Search {
+      flex: 1;
+      margin: 0px 50px;
+    }
+    .ButtonBox {
+      display: flex;
+      padding: 0px 5px;
+      gap: 20px;
+      .Profile {
+        min-width: 108px;
+        height: 31px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: solid 1px black;
+        padding: 5px 15px;
+        border-radius: 15px;
+        background-color: transparent;
+        img {
+          border-radius: 100%;
+          width: 20px;
+          height: 20px;
+        }
+        &:hover {
+          scale: 1.02;
+        }
+        &:active {
+          scale: 0.98;
+        }
+      }
+      .loading {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 15px;
+        border-radius: 20px;
+        animation: Skeleton 1.5s infinite;
+
+        span {
+          height: 15px;
+          background-color: gray;
+          width: 2px;
+        }
+        b {
+          opacity: 0;
+        }
+        .cartBox {
+          opacity: 0;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          transition: opacity 0.3s ease;
+        }
+
+        .Visible {
+          position: absolute;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          opacity: 0;
+          left: -70%; /* Начальная позиция элемента слева */
+          transform: translateX(0); /* Не будет сдвигаться при старте */
+        }
+
+        &:hover {
+          transform: scale(1.01);
+
+          .cartBox {
+            opacity: 0; /* Прячем элементы при наведении */
+          }
+
+          .Visible {
+            opacity: 1; /* Делаем видимым элемент */
+            left: 10px; /* Элемент сдвигается вправо */
+            transform: translateX(0); /* Сдвигаем элемент на его стандартное положение */
+          }
+        }
+
+        &:active {
+          transform: scale(0.98); /* Уменьшаем элемент при нажатии */
+          background-color: black;
+        }
+
+        /* Анимация для загрузки */
+        @keyframes Skeleton {
+          0% {
+            background-color: gray;
+          }
+          50% {
+            background-color: lightgray;
+          }
+          100% {
+            background-color: gray;
+          }
+        }
+
+        /* Применение анимации к span */
+        span {
+          animation: Skeleton 1.5s infinite;
+        }
+      }
+      .cart {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: solid 1px black;
+        padding: 5px 15px;
+        border-radius: 20px;
+        min-width: 123px;
+        color: var(--text-primary);
+        background-color: var(--background-secondary);
+        span {
+          height: 15px;
+          background-color: gray;
+          width: 2px;
+        }
+        .cartBox {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          transition: 0.3s ease;
+        }
+        .Visible {
+          position: absolute;
+          transition: 0.3s ease;
+          opacity: 0;
+          right: 10px;
+          transform: translateX(-70%);
+        }
+        &:hover {
+          scale: 1.01;
+
+          .cartBox {
+            opacity: 0;
+            transition: 0.3s ease;
+          }
+          .Visible {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        &:active {
+          scale: 0.98;
+          background-color: black;
+        }
+      }
+    }
+  }
+}
+.popUp {
+  z-index: 40;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__content {
+    width: 800px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    .textPopUp {
+      text-align: center;
+      h1 {
+        color: black;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      p {
+        color: var(--color-accent);
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+    .ShoppingCart {
+      img {
+        max-width: 200px;
+        height: 100%;
+      }
+    }
+    .cross {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px 20px;
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: '';
+        width: 100%;
+
+        background-color: rgba(0, 0, 0, 0.1);
+        height: 2px;
+      }
+      span {
+        cursor: pointer;
+      }
+      p {
+        color: black;
+        font-weight: 700;
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1685) {
+}

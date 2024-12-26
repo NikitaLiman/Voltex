@@ -1,0 +1,28 @@
+.container {
+  border-radius: 10px;
+  width: fit-content;
+  background-color: black;
+  padding: 5px;
+  display: flex;
+  ul {
+    gap: 20px;
+    li {
+      cursor: pointer;
+      letter-spacing: 2px;
+      border-radius: 10px;
+      padding: 5px 5px;
+
+      a {
+        color: white;
+        font-size: 16px;
+      }
+    }
+    .active {
+      a {
+        color: var(--color-accent);
+        font-weight: 700;
+      }
+      background-color: white;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+.container {
+  z-index: 30;
+  display: flex;
+  gap: 10px;
+  position: relative;
+  align-items: center;
+  background-color: #ddd;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0px 10px;
+  min-width: 400px;
+
+  input {
+    flex: 1;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__content {
+    position: absolute;
+    width: 100%;
+
+    border-radius: 10px;
+    top: 54px;
+    left: 0;
+    right: 0;
+    transition: all 200ms ease-in-out;
+    opacity: 1;
+    z-index: 30;
+    background-color: white;
+    .CardsBlock {
+      padding: 10px 5px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 70px;
+      height: 100%;
+      &__Named {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        &__content {
+          display: flex;
+          gap: 15px;
+          cursor: pointer;
+          padding: 5px;
+          border-radius: 10px;
+          a {
+            p {
+              color: black;
+            }
+          }
+          &:hover {
+            transition: 0.3s ease;
+            background-color: rgba(245, 245, 245, 0.794);
+          }
+        }
+      }
+      &__BLockInfo {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        overflow: hidden;
+        &__info {
+          min-width: 135px;
+          img {
+            max-height: 60px;
+            object-fit: contain;
+          }
+          border-right: solid 2px black;
+          width: fit-content;
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          padding-right: 10px;
+          .Text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 5px;
+            h1 {
+              font-size: 12px;
+              font-weight: 600;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+            }
+            p {
+              font-size: 12px;
+              color: var(--color-highlight);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.containerSearch {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 50%;
+  z-index: 30;
+}

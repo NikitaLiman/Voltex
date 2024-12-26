@@ -1,0 +1,163 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.drawer {
+  width: 600px;
+  max-width: 80%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  position: relative;
+
+  &.open {
+    transform: translateX(0);
+  }
+  .CartDrawerContainer {
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    &::after {
+      content: '';
+      width: 100%;
+      background-color: rgba(128, 128, 128, 0.2);
+      height: 2px;
+    }
+    p {
+      color: black;
+      font-weight: 700;
+      font-size: 24px;
+    }
+    &__info {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      justify-content: space-between;
+      .LogoImg {
+        img {
+          width: 90px;
+          height: 100%;
+        }
+      }
+      .modelInfo {
+        p {
+          font-weight: 700;
+          font-size: 18px;
+        }
+      }
+      .Price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .controller {
+          border-radius: 10px;
+          padding: 5px;
+          border: 1px solid black;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          span {
+            font-size: 16px;
+            font-weight: 700;
+          }
+          .Minus,
+          .Plus {
+            border-radius: 100%;
+            border: solid 1px black;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            &:hover {
+              scale: 1.05;
+            }
+            &:active {
+              scale: 0.95;
+            }
+          }
+        }
+      }
+    }
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      button {
+        border: 1px solid rgba(128, 128, 128, 0.24);
+        border-radius: 10px;
+        width: 170px;
+        height: 45px;
+        &:hover {
+          background-color: rgba(128, 128, 128, 0.252);
+        }
+      }
+      &__mainBTN {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        .GTC {
+          color: white;
+          font-weight: 700;
+          background-color: var(--color-accent);
+          transition: all 0.3s;
+          &:hover {
+            background-color: var(--color-highlight);
+            transition: all 0.3s;
+          }
+        }
+        .PAO {
+          color: white;
+          font-weight: 700;
+          color: var(--color-accent);
+          border: 1px solid var(--color-accent);
+          transition: all 0.3s;
+          &:hover {
+            color: var(--color-highlight);
+            border: 1px solid var(--color-highlight);
+            transition: all 0.3s;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    &:hover {
+      color: gray;
+      transition: 0.3s ease;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+}

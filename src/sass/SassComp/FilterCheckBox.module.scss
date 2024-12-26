@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    width: 25px;
+    height: 25px;
+    appearance: none;
+    border: 2px solid var(--color-accent);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:checked {
+      background-color: var(--color-accent); /* Фон при активном состоянии */
+      position: relative;
+    }
+    &::after {
+      content: '✔';
+      color: white;
+      font-size: 16px;
+      display: block;
+    }
+  }
+}

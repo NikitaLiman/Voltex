@@ -1,0 +1,138 @@
+.container {
+  &__content {
+    h1 {
+      margin-top: 41px;
+      font-weight: 700;
+      font-size: 24px;
+      color: black;
+    }
+  }
+  .MainPart {
+    margin-top: 26px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    .filters {
+      width: 245px;
+    }
+    .Products {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      h6 {
+        padding: 10px;
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media (max-width: 1685px) {
+  .container {
+    &__content {
+      h1 {
+        margin-top: 41px;
+        font-weight: 700;
+        font-size: 24px;
+        color: black;
+      }
+    }
+    .MainPart {
+      margin-top: 26px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      .filters {
+        padding: 0px 10px;
+        width: 200px;
+      }
+      .Products {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        h6 {
+          padding: 10px;
+          font-size: 30px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.Cart {
+  background-color: whitesmoke;
+}
+.product {
+  background-color: whitesmoke;
+  .TopBar {
+    padding: 10px 0;
+    ul {
+      position: relative;
+      display: flex;
+      gap: 20px;
+      width: 100%;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        height: 2px;
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.218);
+      }
+      li {
+        position: relative;
+        cursor: pointer;
+        a {
+          font-weight: 500;
+          font-size: 16px;
+          color: black;
+        }
+
+        &:hover {
+          opacity: 0.7;
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            height: 2px;
+            width: 100%;
+            background-color: var(--color-highlight);
+            opacity: 0.7;
+          }
+        }
+      }
+      .active {
+        position: relative;
+        color: var(--color-highlight);
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          height: 2px;
+          width: 100%;
+          background-color: var(--color-highlight);
+        }
+      }
+    }
+  }
+}
+
+.NotAuth {
+  text-align: center;
+  h1 {
+    padding: 10px;
+    font-weight: 500;
+    font-size: 35px;
+  }
+  button {
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+  }
+}

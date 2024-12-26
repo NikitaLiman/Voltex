@@ -1,0 +1,20 @@
+.container {
+  border-radius: 10px;
+  padding: 5px 15px;
+  width: fit-content;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  &__text {
+    padding: 0px 5px;
+    display: flex;
+    gap: 5px;
+    b {
+      color: white;
+    }
+    p {
+      font-weight: 700;
+      color: var(--color-accent);
+    }
+  }
+}

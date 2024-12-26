@@ -1,0 +1,174 @@
+/* Reset and base styles  */
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Common */
+
+body {
+  font-family: var(--font-nunito), sans-serif;
+}
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type='submit'] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+legend {
+  display: block;
+}
+
+main {
+  min-height: 100vh;
+  min-width: 1025px;
+  padding: 0px 5px;
+}
+:root {
+  /* Основные цвета */
+  --color-black: #000000; /* Чисто черный */
+  --color-dark-gray: #121212; /* Темно-серый, как в Spotify */
+  --color-light-gray: #f5f5f5; /* Светло-серый для фона */
+  --color-gray-blue: #1c3a4b; /* Серо-голубой, для акцентов */
+  --color-blue: #3a6ea5; /* Глубокий синий для контрастных элементов */
+  --color-white: #ffffff; /* Белый для текста и фона */
+
+  /* Акцентные цвета */
+  --color-highlight: #ff5722; /* Яркий оранжевый, вдохновленный Nike */
+  --color-accent: #4caf50; /* Зеленый для дополнительных акцентов */
+
+  /* Текстовые цвета */
+  --text-primary: var(--color-white); /* Основной цвет текста */
+  --text-secondary: var(--color-gray-blue); /* Вторичный цвет текста */
+  --text-muted: var(--color-light-gray); /* Приглушенный текст */
+
+  /* Фоны */
+  --background-main: var(--color-black); /* Основной фон */
+  --background-secondary: var(--color-dark-gray); /* Второстепенный фон */
+
+  /* Отступы и размеры */
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 2rem;
+
+  /* Радиусы */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 16px;
+
+  /* Шрифты */
+  --font-size-small: 0.875rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.25rem;
+
+  /* Тени */
+  --shadow-light: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  --shadow-dark: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+#nprogress .bar {
+  @apply --color-accent !important;
+}
+#nprogress .peg {
+  @apply --color-accent !important;
+}

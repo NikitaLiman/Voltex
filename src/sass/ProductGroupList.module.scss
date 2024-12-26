@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  h1 {
+    color: black;
+    font-weight: 700;
+    font-size: 24px;
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(233px, 2fr));
+    gap: 5px;
+  }
+}

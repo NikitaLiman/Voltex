@@ -1,0 +1,299 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id           Int               @id @default(autoincrement())
+  fullname     String
+  email        String
+  password     String
+  role         UserRole          @default(USER)
+  provider     String?
+  providerId   String?
+  verified     DateTime?
+  createdAT    DateTime          @default(now())
+  updateAT     DateTime          @updatedAt
+  cart         Cart?
+  orders       Order[]
+}
+
+model Category {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  product Product[]
+}
+
+model Product {
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  imageUrl        String
+  categoryId      Int
+  createdAT       DateTime          @default(now())
+  updateAT        DateTime          @updatedAt
+  category        Category          @relation(fields: [categoryId], references: [id])
+  items           Variations[]
+  filters         ProductFilter[]  
+
+  Recommendation Recommendation[]                 
+}
+
+model Variations {
+  id             Int              @id @default(autoincrement())
+  price          Float[]
+  variation      String[]
+  describe       String?
+  productId      Int
+  display        String[]
+  color          Json
+  cartItem       CartItem[]
+  recommendation Recommendation[]
+  Characteristics Characteristics[]
+  product        Product          @relation(fields: [productId], references: [id])
+
+}
+
+
+
+
+model Recommendation {
+  id        Int        @id @default(autoincrement())
+  name      String
+  imageUrl  String
+  price     Int
+  VariationsId Int
+  product   Variations @relation(fields: [VariationsId], references: [id])
+
+  
+  productId Int
+  productItem   Product @relation(fields: [productId], references: [id])
+
+}
+
+model Characteristics {
+  id        Int        @id @default(autoincrement())
+  name String
+
+
+  productId Int
+  product   Variations @relation(fields: [productId], references: [id])
+
+  phone Phone[]
+  laptops Laptop[]
+  Tvs     TvMonitor[]
+  Earpohnes Earphones[]
+  Keyboard KeyBoards[]
+  Mouse Mouses[]
+} 
+
+model Filter {
+  id       Int             @id @default(autoincrement())
+  name     String
+  type     String          // Тип фильтра (Memory, Color и т.д.)
+  products ProductFilter[]
+}
+
+model ProductFilter {
+  id        Int      @id @default(autoincrement())
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  filter    Filter   @relation(fields: [filterId], references: [id])
+  filterId  Int
+}
+
+
+model Phone {
+  id        Int        @id @default(autoincrement())
+  name Json
+  standardInternet Json
+  Display Json
+  SimCards Json
+  MemoryFunctions Json
+  OperatingSystem Json
+  FrontCamera Json
+  Processor Json
+  MainCamera Json
+  Materials Json
+  Connectors Json
+  Navigation Json
+  Dimensions Json
+  WirelessTechnologies Json
+
+  characteristics Characteristics @relation(fields: [characteristicsId],references: [id])
+  characteristicsId Int
+
+}
+
+
+model Laptop {
+  id        Int        @id @default(autoincrement())
+  name Json
+  Screen Json
+  Processor Json
+  MemoryFunctions Json
+  VideoCard Json
+  Corps Json
+  Connectors Json
+  Dimensions Json
+  Navigation Json
+  WirelessTechnologies Json
+  BatteryLife Json
+  SoundSystem Json
+  Features Json
+  DeliverySet Json
+  Origin Json
+  Guarantee Json
+
+
+
+  characteristics Characteristics @relation(fields: [characteristicsId],references: [id])
+  characteristicsId Int
+}
+
+model TvMonitor {
+  id        Int        @id @default(autoincrement())
+  name Json
+  ScreenDiagonal Json
+  SmartTV Json
+  DisplayTechnology Json
+  UpdateFrequency Json
+  Resolution Json
+  ModelYear Json
+  MatrixType Json
+  CountryRegistration Json
+  BatteryLife Json
+  Interfaces Json
+  Features Json
+  DeliverySet Json
+  Origin Json
+  Guarantee Json
+
+
+
+  characteristics Characteristics @relation(fields: [characteristicsId],references: [id])
+  characteristicsId Int
+}
+
+
+model Peripherals {
+  id        Int        @id @default(autoincrement())
+
+
+  Earphones  Earphones[]
+  KeyBoards  KeyBoards[]
+  Mouses     Mouses[]
+}
+
+model Earphones {
+  id        Int        @id @default(autoincrement())
+  name Json
+  HeadphoneType Json
+  Features Json
+  ConnectionType Json
+  ConnectionInterface Json
+  ChargingInterface Json
+  AdditionalFeatures Json
+  CountryRegistration Json
+  Guarantee Json 
+
+
+  characteristics Characteristics @relation(fields: [characteristicsId],references: [id])
+  characteristicsId Int
+  Peripherals Peripherals @relation(fields: [PeripheralsId], references: [id])
+  PeripheralsId Int
+}
+model KeyBoards {
+  id        Int        @id @default(autoincrement())
+  name Json
+  KeyboardType Json
+  Connection Json
+  CountryOrigin Json
+  Layout Json
+  Weight Json
+  AdditionalFeatures Json
+  Interface Json
+  Dimensions Json
+  Guarantee Json 
+
+  characteristics Characteristics @relation(fields: [characteristicsId],references: [id])
+  characteristicsId Int
+  Peripherals Peripherals @relation(fields: [PeripheralsId], references: [id])
+  PeripheralsId Int
+  
+}
+model Mouses {
+  id        Int        @id @default(autoincrement())
+  name Json
+  Connection Json
+  Interface Json
+  Features Json
+  Type Json
+  SensorType Json
+  Guarantee Json 
+
+  characteristics Characteristics @relation(fields: [characteristicsId],references: [id])
+  characteristicsId Int
+  Peripherals Peripherals @relation(fields: [PeripheralsId], references: [id])
+  PeripheralsId Int
+  
+}
+
+
+model Cart {
+  id          Int        @id @default(autoincrement())
+  userId      Int?       @unique
+  token       String
+  totalAmount Int        @default(0)
+  createdAT   DateTime   @default(now())
+  updateAT    DateTime   @updatedAt
+  user        User?      @relation(fields: [userId], references: [id])
+  CartItem    CartItem[]
+}
+
+model CartItem {
+  id               Int               @id @default(autoincrement())
+  cartId           Int
+  quanity          Int               @default(1)
+  createdAT        DateTime          @default(now())
+  updateAT         DateTime          @updatedAt
+  variationsItemId Int
+  cart             Cart              @relation(fields: [cartId], references: [id])
+  variations       Variations        @relation(fields: [variationsItemId], references: [id])
+  selectedColor  Int?
+  selectedVariation  Int?
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  userId      Int?
+  token       String
+  totalAmount Int
+  status      OrderStatus @default(PENDING)
+  paymentId   String?
+  items       Json
+  fullname    String
+  email       String
+  phone       String
+  comment     String?
+  createdAT   DateTime    @default(now())
+  updateAT    DateTime    @updatedAt
+  user        User?        @relation(fields: [userId], references: [id])
+}
+
+
+
+enum OrderStatus {
+  PENDING
+  SUCCEEDED
+  CANCELLED
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}

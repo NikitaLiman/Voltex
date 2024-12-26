@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  &__search {
+    input {
+      width: 100%;
+      background-color: whitesmoke;
+      border-radius: 10px;
+      padding: 5px;
+      padding-left: 5px;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 0;
+    .List {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+  }
+  .skeleton {
+    max-width: 200px;
+    background-color: #e0e0e0;
+    height: 20px;
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite linear;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: #e0e0e0;
+    }
+    50% {
+      background-color: #cfcfcf;
+    }
+    100% {
+      background-color: #e0e0e0;
+    }
+  }
+}

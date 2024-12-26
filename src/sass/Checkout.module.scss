@@ -1,0 +1,198 @@
+.container {
+  position: relative;
+  height: 100%;
+  &__higherBlock {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    span {
+      font-size: 16px;
+      color: rgba(128, 128, 128, 0.6);
+    }
+  }
+  &__main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    &__productBlock {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+      .Delete {
+        padding: 20px 5px;
+        background-color: white;
+        button {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 20px;
+        }
+      }
+      .ProductInfo {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        background-color: white;
+        height: 200px;
+        max-height: 272px;
+        padding: 0px 10px;
+        .deletedItem {
+          width: 100%;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          h1 {
+            color: black;
+            font-weight: 700;
+            font-size: 28px;
+          }
+          p {
+            color: var(--color-accent);
+            font-weight: 500;
+            font-size: 18px;
+          }
+          button {
+            background-color: var(--color-accent);
+            color: white;
+            height: 40px;
+            border-radius: 5px;
+            width: 450px;
+          }
+        }
+        .imageUrl {
+          img {
+            object-fit: contain;
+            width: 106px;
+            height: 106px;
+          }
+        }
+        &__cont {
+          flex: 1 1;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .imageUrl {
+            img {
+              width: 96px;
+              height: 96px;
+            }
+          }
+          .boxInfo {
+            display: flex;
+            flex-direction: column;
+
+            &__content {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              .idShow {
+                display: flex;
+                flex-direction: column;
+              }
+            }
+            button {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            }
+          }
+          &__Configuration {
+            display: flex;
+            justify-content: space-between;
+            button {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            }
+            .controller {
+              width: fit-content;
+              border-radius: 10px;
+              padding: 5px;
+              border: 1px solid black;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              span {
+                font-size: 16px;
+                font-weight: 700;
+              }
+              .Minus,
+              .Plus {
+                border-radius: 100%;
+                border: solid 1px black;
+                width: 27px;
+                height: 27px;
+                cursor: pointer;
+                &:hover {
+                  scale: 1.05;
+                }
+                &:active {
+                  scale: 0.95;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &__TotalInformation {
+      top: 20px;
+      position: sticky;
+      height: 272px;
+      max-width: 500px;
+      flex: 1;
+      background-color: white;
+      padding: 10px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .CheckoutBtn {
+        margin-top: 30px;
+        button {
+          background-color: var(--color-accent);
+          color: white;
+          border-radius: 5px;
+          width: 450px;
+          height: 50px;
+        }
+      }
+      .priceProducts {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+          font-weight: 400;
+          font-size: 18px;
+        }
+        span {
+          font-weight: 700;
+          font-size: 24px;
+        }
+      }
+      .totalPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p {
+          font-weight: 400;
+          font-size: 18px;
+        }
+        span {
+          font-weight: 700;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
