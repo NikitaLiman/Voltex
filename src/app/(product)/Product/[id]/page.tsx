@@ -3,8 +3,10 @@ import { prisma } from '../../../../../prisma/prisma-client';
 import { Container } from '@/components/shared';
 import Styles from '@/sass/pagePop.module.scss';
 import { Sticky } from '@/components/ui/sticky';
+import { PageProps } from '../../../../../.next/types/app/(product)/Product/[id]/Characteristics/page';
 
-export default async function Page({ params: { id } }: { params: { id: number } }) {
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
   const product = await prisma.product.findFirst({
     where: { id: Number(id) },
     include: {
