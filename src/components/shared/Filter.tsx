@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Styles from '../../sass/Filter.module.scss';
-import { FilterCheckBox } from '../ui/filterCheckBox';
 import { CheckboxFilterGroup } from './checkbox-filter-group';
 import { useFilter } from '@/store/useFilter';
 import qs from 'qs';
@@ -19,8 +18,6 @@ export const Filter = () => {
     searchParams.get('items')?.split(','),
   );
 
-  console.log(loading);
-  console.log(items, 'awd111wddw');
   const filteredGroups = items.reduce((acc, cur) => {
     if (!acc[cur.type]) {
       acc[cur.type] = [];
@@ -41,7 +38,6 @@ export const Filter = () => {
     router.push(`?${query}`, {
       scroll: false,
     });
-    console.log(items, selectedFilters);
   }, [items, selectedFilters]);
   if (loading) {
     return (

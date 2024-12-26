@@ -44,6 +44,7 @@ export default function CheckOut() {
         location.href = url;
       }
     } catch (error) {
+      console.log(error);
       toast.error('Error to create Order');
       setSubmitting(false);
     }

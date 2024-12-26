@@ -4,11 +4,9 @@ import Styles from '../../sass/Header.module.scss';
 import Image from 'next/image';
 import Vercel from '../../img/Logo.png';
 import { Container } from './container';
-import { User } from 'lucide-react';
 import { SearchBar } from './SearchBar';
 import { CartButton } from '../ui/cart-button';
 import Link from 'next/link';
-import { useSession, signIn } from 'next-auth/react';
 import { ProfileButton } from '../ui/profile-button';
 import { AuthModel } from './auth-models/auth-models';
 

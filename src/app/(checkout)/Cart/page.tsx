@@ -28,7 +28,7 @@ export default function Checkout() {
     await useCartStore.getState().removeAll();
     await fetchCart();
   };
-  console.log(items, 'awd');
+
   return (
     <Container className={Styles.container}>
       <div className={Styles.container__higherBlock}>

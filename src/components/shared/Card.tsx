@@ -34,7 +34,6 @@ export const Card: React.FC<Props> = ({
   id,
   name,
   price,
-  color,
   variation,
   title,
   text,

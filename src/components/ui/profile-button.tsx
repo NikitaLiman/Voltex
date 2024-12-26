@@ -1,4 +1,4 @@
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Styles from '../../sass/Header.module.scss';
 import React from 'react';
 import { CircleUser, User } from 'lucide-react';
@@ -10,7 +10,6 @@ interface Props {
 
 export const ProfileButton: React.FC<Props> = ({ onClickSignin }) => {
   const { data: session } = useSession();
-  console.log(session, 'awdawd');
   return (
     <>
       {!session ? (

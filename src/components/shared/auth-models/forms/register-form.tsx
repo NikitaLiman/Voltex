@@ -1,18 +1,17 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { formLoginSchema, registerSchema, TformRegisterValues } from './schemas';
+import { registerSchema, TformRegisterValues } from './schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Styles from '../../../../sass/authModel.module.scss';
 import { FormInput } from '../../form-components/form-input';
 import toast from 'react-hot-toast';
-import { signIn } from 'next-auth/react';
 import { RegisterUser } from '@/app/actions';
 
 interface Props {
   onClose: VoidFunction;
 }
 
-export const RegisterForm: React.FC<Props> = ({ onClose }) => {
+export const RegisterForm: React.FC<Props> = () => {
   const onSubmit = async (data: TformRegisterValues) => {
     try {
       await RegisterUser({

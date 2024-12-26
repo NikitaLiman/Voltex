@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../../prisma/prisma-client';
 import { updateCartTotalAmount } from '../../../../lib/updateCartAmount';
-import { JsonValue } from '@prisma/client/runtime/library';
 import { FindOrCreate } from '../../../../lib/findOrCreate';
 
 export interface GetCartItems {
@@ -132,9 +131,10 @@ export async function DELETE(req: NextRequest) {
     if (!updateUserCart) {
       return NextResponse.json({ message: 'Failed to update cart total amount' }, { status: 500 });
     }
-    return NextResponse.json(updateUserCart);
     console.log('All items removed from the cart');
+    return NextResponse.json(updateUserCart);
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: 'Error[CART ALL DELETE]' });
   }
 }

@@ -13,13 +13,12 @@ interface Props {
 
 export const LogInForm: React.FC<Props> = ({ onClose }) => {
   const onSubmit = async (data: TformLoginValues) => {
-    console.log(data);
     try {
       const resp = await signIn('credentials', {
         ...data,
         redirect: false,
       });
-      console.log(resp);
+
       if (!resp?.ok) {
         return toast.error('Cannot Enter To account');
       }

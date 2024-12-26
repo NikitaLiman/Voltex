@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
 import { Header } from '@/components/shared/header';
 import Styles from '../page.module.scss';
 import { Container } from '@/components/shared';

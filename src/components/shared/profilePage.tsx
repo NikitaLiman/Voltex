@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { formLoginSchema, registerSchema, TformRegisterValues } from './auth-models/forms/schemas';
+import { registerSchema, TformRegisterValues } from './auth-models/forms/schemas';
 import { User } from '@prisma/client';
 import toast from 'react-hot-toast';
 import { signOut } from 'next-auth/react';
@@ -16,7 +16,6 @@ interface Props {
 }
 
 export const ProfilePage: React.FC<Props> = ({ data }) => {
-  console.log(data, '123');
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -28,7 +27,6 @@ export const ProfilePage: React.FC<Props> = ({ data }) => {
   });
 
   const onSubmit = async (data: TformRegisterValues) => {
-    console.log('Form data:', data);
     try {
       await updateUserInput({
         email: data.email,

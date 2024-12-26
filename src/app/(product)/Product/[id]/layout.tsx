@@ -16,7 +16,6 @@ export default function RootLayoutCart({
   children: React.ReactNode;
   params: { id: string };
 }) {
-  console.log(id);
   return (
     <main className={Styles.product}>
       <Container>

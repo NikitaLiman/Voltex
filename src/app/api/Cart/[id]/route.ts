@@ -66,6 +66,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     }
     return NextResponse.json(updateUserCart);
   } catch (error) {
+    console.log(error);
     console.log('[CART_PATCH] Server Error]');
     return NextResponse.json({ message: 'Bad Attempt To Update Cart ' }, { status: 500 });
   }

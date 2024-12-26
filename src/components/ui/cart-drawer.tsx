@@ -2,7 +2,6 @@
 import React from 'react';
 import Styles from '../../sass/SassComp/CartDrawer.module.scss';
 import { Minus, Plus } from 'lucide-react';
-import { useSelector } from 'react-redux';
 import { ICartItem } from '../../../lib/getCartDetails';
 import { useCartStore } from '@/store/cart';
 import toast from 'react-hot-toast';
@@ -19,21 +18,13 @@ interface DrawerProps {
   activeVar: number;
 }
 
-export const CartDrawer: React.FC<DrawerProps> = ({
-  isOpen,
-  onClose,
-  active,
-  id,
-  selectedPrice,
-  activeVar,
-}) => {
+export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id, activeVar }) => {
   const [item, setItem] = React.useState<ICartItem[]>([]);
 
   const fetchCart = async () => {
     await useCartStore.getState().fetchCartItems();
     const itemFetch = useCartStore.getState().items;
     setItem(itemFetch);
-    console.log('Fetched items:', itemFetch);
   };
 
   const loading = useCartStore((state) => state.loading);
@@ -61,6 +52,7 @@ export const CartDrawer: React.FC<DrawerProps> = ({
         toast.success('Added To Cart');
       }
     } catch (error) {
+      console.log(error);
       toast.error('Error');
     }
   };

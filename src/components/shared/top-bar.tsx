@@ -1,7 +1,6 @@
 import React from 'react';
 import Styles from '../../sass/TopBar.module.scss';
 import { CategoryBar } from '@/components/shared/category';
-import { Sort } from '@/components/shared/sort-popup';
 import { Container } from './container';
 import { prisma } from '../../../prisma/prisma-client';
 

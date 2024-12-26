@@ -1,4 +1,3 @@
-import { product } from '../prisma/costans';
 import { prisma } from '../prisma/prisma-client';
 
 export interface GetSearchParams {

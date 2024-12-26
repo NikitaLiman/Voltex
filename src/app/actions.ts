@@ -7,7 +7,6 @@ import { cookies } from 'next/headers';
 import { CreatePayPalPayment } from '../../lib/create-paymant';
 import { GetUserSession } from '../../lib/get-user-sessiaon';
 import { hashSync } from 'bcrypt';
-import toast from 'react-hot-toast';
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
@@ -68,10 +67,12 @@ export async function createOrder(data: CheckoutFormValues) {
         cartId: userCart.id,
       },
     });
-    const response = await CreatePayPalPayment(order.totalAmount, order.id);
+    const response = await CreatePayPalPayment(order.totalAmount);
 
     return response;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function updateUserInput(body: Prisma.UserUpdateInput) {

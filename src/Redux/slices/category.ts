@@ -15,7 +15,7 @@ const CategorySlice = createSlice({
     ActiveId: (state, action) => {
       const { title, categoryId } = action.payload;
       state.activeId = categoryId;
-      console.log(`Title: ${title}, CategoryId: ${categoryId}`);
+      console.log(title);
     },
   },
 });

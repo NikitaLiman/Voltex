@@ -267,7 +267,7 @@ export const CharacteristicsInfo: React.FC<CharacteristicsArray> = ({ Characteri
 
   const activeColor = useCartStore.getState().activeColor;
   const activeVar = useCartStore.getState().activeVariation;
-  console.log(KeyBoard, 'wa');
+
   const render = (obj: Record<any, string>) => {
     return Object?.entries?.(obj)?.map(([key, value]) => (
       <div className={Styles.renderComponent} key={key}>

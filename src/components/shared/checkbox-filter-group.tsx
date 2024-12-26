@@ -21,7 +21,6 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
   title,
   items,
   defaultItems,
-  defaultValue,
   limit,
   searchinputBox = 'Search..',
   selectedIds,

@@ -6,10 +6,9 @@ import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 
 import 'swiper/swiper-bundle.css';
-import { Check, CreditCard, Heart, ShieldCheck, ShoppingCart, Star } from 'lucide-react';
+import { Check, CreditCard, ShieldCheck, ShoppingCart, Star } from 'lucide-react';
 import { Recommendation } from '@prisma/client';
 import { CartDrawer } from './cart-drawer';
-import { ICartItem } from '../../../lib/getCartDetails';
 import { useCartStore } from '@/store/cart';
 import Link from 'next/link';
 
@@ -46,12 +45,11 @@ export const Sticky: React.FC<Props> = ({
   const activeColor = useCartStore.getState().activeColor;
   const activeVar = useCartStore.getState().activeVariation;
   const swiperRef = React.useRef<any>(null);
-  const itemFetch = useCartStore.getState().items;
 
   const addVar = (index: number) => {
     useCartStore.getState().addActiveVar(index);
   };
-  console.log(itemFetch, '123');
+  console.log(active);
   const handleColorChange = (index: number) => {
     setSelectedColor(index);
   };
@@ -94,8 +92,7 @@ export const Sticky: React.FC<Props> = ({
               navigation={true}
               slidesPerView={1}
               speed={0}
-              onSlideChange={(swiper) => setactiveSlide(swiper.activeIndex)}
-              onSwiper={(swiper) => console.log(swiper)}>
+              onSlideChange={(swiper) => setactiveSlide(swiper.activeIndex)}>
               {colorArr?.[activeColor]?.images?.map((item, index) => (
                 <SwiperSlide key={index}>
                   <Image src={item} alt="" width={500} height={500} />

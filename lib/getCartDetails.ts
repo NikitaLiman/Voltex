@@ -36,7 +36,6 @@ export const getCartDetails = (data: CartDto) => {
     selectedVariation: item.selectedVariation,
   }));
 
-  console.log('data', data);
   return {
     items,
     totalAmount: data?.totalAmount || 0,

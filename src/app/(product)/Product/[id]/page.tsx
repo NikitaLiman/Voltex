@@ -1,8 +1,7 @@
 import React from 'react';
 import { prisma } from '../../../../../prisma/prisma-client';
-import { Container, Header } from '@/components/shared';
+import { Container } from '@/components/shared';
 import Styles from '@/sass/pagePop.module.scss';
-import { TopBarPage } from '@/components/ui/topBar';
 import { Sticky } from '@/components/ui/sticky';
 
 export default async function Page({ params: { id } }: { params: { id: number } }) {
