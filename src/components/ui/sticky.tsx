@@ -93,8 +93,8 @@ export const Sticky: React.FC<Props> = ({
               slidesPerView={1}
               speed={0}
               onSlideChange={(swiper) => setactiveSlide(swiper.activeIndex)}>
-              {colorArr?.[activeColor]?.images?.length > 0 ? (
-                colorArr?.[activeColor]?.images?.map((item, index) => (
+              {colorArr?.[activeColor]?.images?.length ? (
+                colorArr[activeColor].images.map((item, index) => (
                   <SwiperSlide key={index}>
                     <Image src={item} alt="" width={500} height={500} />
                   </SwiperSlide>
