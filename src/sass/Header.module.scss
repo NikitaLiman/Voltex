@@ -36,7 +36,7 @@
       padding: 0px 5px;
       gap: 20px;
       .Profile {
-        min-width: 108px;
+        min-width: 110px;
         height: 31px;
         display: flex;
         align-items: center;
@@ -45,6 +45,8 @@
         padding: 5px 15px;
         border-radius: 15px;
         background-color: transparent;
+        color: black;
+        font-weight: 500;
         img {
           border-radius: 100%;
           width: 20px;

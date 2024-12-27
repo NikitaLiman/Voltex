@@ -102,25 +102,30 @@ export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id,
                   </div>
                   <div className={Styles.Price}>
                     <h2>{CurrentPrice || item?.[0]?.variations?.price?.[0]} $</h2>
-                    {item?.map(
-                      (item, index) =>
-                        item.variationItemId === firstItem && (
-                          <div key={index} className={Styles.controller}>
+                    {item?.map((cartItem) => {
+                      if (
+                        cartItem.variationItemId === firstItem &&
+                        cartItem.selectedColor === active &&
+                        cartItem.selectedVariation === activeVar
+                      ) {
+                        return (
+                          <div key={cartItem.id} className={Styles.controller}>
                             <button
-                              onClick={() => UpdateItemAmount(item.id, item.quanity - 1)}
+                              onClick={() => UpdateItemAmount(cartItem.id, cartItem.quanity - 1)}
                               className={Styles.Minus}>
-                              {' '}
                               <Minus />
                             </button>
-                            <span>{item.quanity}</span>
+                            <span>{cartItem.quanity}</span>
                             <button
-                              onClick={() => UpdateItemAmount(item.id, item.quanity + 1)}
+                              onClick={() => UpdateItemAmount(cartItem.id, cartItem.quanity + 1)}
                               className={Styles.Plus}>
                               <Plus />
                             </button>
                           </div>
-                        ),
-                    )}
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
                 </div>
               </>

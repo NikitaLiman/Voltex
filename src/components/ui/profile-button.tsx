@@ -18,14 +18,16 @@ export const ProfileButton: React.FC<Props> = ({ onClickSignin }) => {
           Log in
         </button>
       ) : (
-        <button className={Styles.Profile}>
-          {session?.user?.image ? (
-            <img src={session.user.image} alt="" />
-          ) : (
-            <CircleUser size={20} />
-          )}
-          <Link href="/profile">Profile</Link>
-        </button>
+        <Link href="/profile">
+          <button className={Styles.Profile}>
+            {session?.user?.image ? (
+              <img src={session.user.image} alt="" />
+            ) : (
+              <CircleUser size={20} />
+            )}
+            Profile
+          </button>
+        </Link>
       )}
     </>
   );

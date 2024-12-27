@@ -16,6 +16,7 @@ import {
 import { SkeletonCheckOut } from '@/components/ui/Skeletons/skeletonCheckout';
 import { createOrder } from '@/app/actions';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 export default function CheckOut() {
   const item = useCartStore((State) => State.items);
@@ -97,7 +98,9 @@ export default function CheckOut() {
                   </div>
                   <div className={Styles.edit}>
                     {' '}
-                    <p>Edit products </p>
+                    <Link href="/Cart">
+                      <p>Edit products </p>
+                    </Link>
                     <span>
                       <ChevronRight color="white" />
                     </span>

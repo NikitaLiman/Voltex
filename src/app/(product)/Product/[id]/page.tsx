@@ -19,7 +19,6 @@ export default async function Page({ params }: PageProps) {
     },
   });
 
-  console.log(product, '[pr');
   return (
     <>
       <Container className={Styles.container}>
