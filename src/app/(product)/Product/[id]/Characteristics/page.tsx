@@ -37,13 +37,13 @@ export default async function Page({ params }: PageProps) {
   // Подготовка данных для отображения
   const characteristicsData = Characteristics?.items?.[0]?.Characteristics || [];
   const Items = Characteristics?.items || [];
-
+  console.log(Items, 'aw');
   return (
     <Container>
       <h1 style={{ padding: '10px 0', fontWeight: '500', fontSize: '18px', letterSpacing: '1px' }}>
         {characteristicsData?.[0]?.name}
       </h1>
-      <CharacteristicsInfo Items={Items} Characteristics={characteristicsData} />
+      <CharacteristicsInfo Items={Items} />
     </Container>
   );
 }

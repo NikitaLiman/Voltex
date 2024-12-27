@@ -38,6 +38,7 @@ export const useCartStore = create<CartState>((set) => ({
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.fetchCart();
+      // @ts-ignore
       set(getCartDetails(data));
     } catch (error: any) {
       console.error(error);
@@ -50,6 +51,7 @@ export const useCartStore = create<CartState>((set) => ({
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.removeCartItem(id);
+      // @ts-ignore
       set(getCartDetails(data));
     } catch (error: any) {
       console.error(error);
@@ -62,6 +64,7 @@ export const useCartStore = create<CartState>((set) => ({
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.removeAll();
+      // @ts-ignore
       set(getCartDetails(data));
     } catch (error: any) {
       console.error(error);
@@ -70,22 +73,12 @@ export const useCartStore = create<CartState>((set) => ({
       set({ loading: false });
     }
   },
-  removeAllItems: async () => {
-    try {
-      set({ loading: true, error: false });
-      const data = await Api.cart.removeAllItems();
-      set(getCartDetails(data));
-    } catch (error: any) {
-      console.error(error);
-      set({ error: true });
-    } finally {
-      set({ loading: false });
-    }
-  },
+
   updateItemQuanity: async (id: number, quantity: number) => {
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.updateItemQuanity(id, quantity);
+      // @ts-ignore
       set(getCartDetails(data));
     } catch (error: any) {
       console.log(error);
@@ -99,6 +92,7 @@ export const useCartStore = create<CartState>((set) => ({
     try {
       set({ loading: true, error: false });
       const data = await Api.cart.addCartItem(value);
+      // @ts-ignore
       set(getCartDetails(data));
     } catch (error: any) {
       console.log(error);

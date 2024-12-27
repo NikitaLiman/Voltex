@@ -16,7 +16,7 @@ interface Props {
 
 export const ProductGroupList: React.FC<Props> = ({ title, items, categoryId }) => {
   const dispatch = useDispatch();
-  const InterceptionRef = React.useRef(null);
+  const InterceptionRef = React.useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const intersection = useIntersection(InterceptionRef, {
     threshold: 1,
   });

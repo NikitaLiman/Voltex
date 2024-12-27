@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../../../prisma/prisma-client';
 import { updateCartTotalAmount } from '../../../../../lib/updateCartAmount';
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const param = await params;
+    const id = Number(param.id);
     if (isNaN(id)) {
       return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
     }
@@ -40,9 +41,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const param = await params;
+    const id = Number(param.id);
     if (isNaN(id)) {
       return NextResponse.json({ message: 'Invalid ID' }, { status: 400 });
     }

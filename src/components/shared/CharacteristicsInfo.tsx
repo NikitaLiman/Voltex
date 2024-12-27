@@ -88,7 +88,7 @@ interface Phone {
   WirelessTechnologies: {
     'Wireless technology characteristics': string[];
   };
-  phoneId: number;
+  characteristicsId: number;
 }
 interface Laptop {
   name: {
@@ -253,17 +253,16 @@ interface Mouse {
 }
 
 interface CharacteristicsArray {
-  Characteristics: CharacteristicsItem[];
   Items: any[];
 }
 
-export const CharacteristicsInfo: React.FC<CharacteristicsArray> = ({ Characteristics, Items }) => {
-  const phone = Characteristics?.[0]?.phone?.[0];
-  const laptop = Characteristics?.[0]?.laptops?.[0];
-  const Tvs = Characteristics?.[0]?.Tvs?.[0];
-  const Earphones = Characteristics?.[0]?.Earpohnes?.[0];
-  const KeyBoard = Characteristics?.[0]?.Keyboard?.[0];
-  const Mouse = Characteristics?.[0]?.Mouse?.[0];
+export const CharacteristicsInfo: React.FC<CharacteristicsArray> = ({ Items }) => {
+  const phone = Items?.[0].Characteristics?.[0]?.phone?.[0];
+  const laptop = Items?.[0].Characteristics?.[0]?.laptops?.[0];
+  const Tvs = Items?.[0].Characteristics?.[0]?.Tvs?.[0];
+  const Earphones = Items?.[0].Characteristics?.[0]?.Earpohnes?.[0];
+  const KeyBoard = Items?.[0].Characteristics?.[0]?.Keyboard?.[0];
+  const Mouse = Items?.[0].Characteristics?.[0]?.Mouse?.[0];
 
   const activeColor = useCartStore.getState().activeColor;
   const activeVar = useCartStore.getState().activeVariation;

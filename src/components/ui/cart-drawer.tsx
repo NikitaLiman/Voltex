@@ -14,7 +14,7 @@ interface DrawerProps {
   children?: React.ReactNode;
   active: number;
   id: number;
-  selectedPrice: number;
+  selectedPrice?: number;
   activeVar: number;
 }
 

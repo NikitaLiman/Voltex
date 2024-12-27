@@ -6,8 +6,13 @@ import { Filter } from '@/components/shared/Filter';
 import { Catalog } from '@/components/shared/Catalog';
 import { FindProduct, GetSearchParams } from '../../lib/find-product';
 
-export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
-  const categories = await FindProduct(searchParams);
+interface PageProps {
+  searchParams: Promise<GetSearchParams>; // Тип searchParams изменен на Promise<GetSearchParams>
+}
+
+export default async function Home({ searchParams }: PageProps) {
+  const params = await searchParams; // Разрешение промиса
+  const categories = await FindProduct(params);
 
   return (
     <div className={styles.container}>

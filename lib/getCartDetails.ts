@@ -27,6 +27,7 @@ export type ICartItem = {
 
 export const getCartDetails = (data: CartDto) => {
   const items = data?.CartItem?.map((item) => ({
+    // @ts-ignore
     id: item?.id,
     quanity: item?.quanity,
     cartId: item?.cartId,

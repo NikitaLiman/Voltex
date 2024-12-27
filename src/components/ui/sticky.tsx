@@ -23,7 +23,7 @@ interface Props {
   cartItem: number;
 }
 
-type ColorProps = {
+export type ColorProps = {
   color: string;
   images: string[];
   nameColor: string;
