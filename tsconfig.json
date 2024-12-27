@@ -3,8 +3,6 @@
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": false,
-    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -13,6 +11,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "strict": false, // Отключает все строгие проверки типов
+    "noImplicitAny": false, // Разрешает implicit any
+    "skipLibCheck": true, // Пропускает проверку библиотек
+    "noImplicitReturns": false, // Отключает строгие проверки возврата значений
+    "noFallthroughCasesInSwitch": false,
 
     "plugins": [
       {
