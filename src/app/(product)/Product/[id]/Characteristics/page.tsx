@@ -9,10 +9,9 @@ export default async function Page({ params }: PageProps) {
   if (!id) {
     throw new Error('ID is missing from params');
   }
-  // Получение данных из базы через Prisma
   const Characteristics = await prisma.product.findFirst({
     where: {
-      id: Number(id), // Преобразуем id в число
+      id: Number(id),
     },
     include: {
       items: {
@@ -33,7 +32,6 @@ export default async function Page({ params }: PageProps) {
     },
   });
 
-  // Подготовка данных для отображения
   const characteristicsData = Characteristics?.items?.[0]?.Characteristics || [];
   const Items = Characteristics?.items || [];
 

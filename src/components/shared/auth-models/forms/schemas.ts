@@ -16,7 +16,7 @@ export const registerSchema = formLoginSchema
   )
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords are not the same',
-    path: ['confirmPassword'], // Change this to match the field name
+    path: ['confirmPassword'],
   });
 
 export type TformLoginValues = z.infer<typeof formLoginSchema>;

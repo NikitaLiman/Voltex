@@ -35,8 +35,8 @@ export async function CreatePayPalPayment(amount: number) {
           },
         ],
         application_context: {
-          return_url: `http://localhost:3000`,
-          cancel_url: `http://localhost:3000`,
+          return_url: `https://next-voltex.vercel.app/`,
+          cancel_url: `https://next-voltex.vercel.app/`,
         },
       },
       {

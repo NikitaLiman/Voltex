@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
       const parentPayment = event.resource.parent_payment;
       const amount = event.resource.amount.total;
 
-      // Логика обновления заказа в базе данных
       await prisma.order.update({
         where: { id: Number(parentPayment) },
         data: {
