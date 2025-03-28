@@ -1,8 +1,8 @@
-import { useSession } from 'next-auth/react';
-import Styles from '../../sass/Header.module.scss';
-import React from 'react';
-import { CircleUser, User } from 'lucide-react';
-import Link from 'next/link';
+import { useSession } from "next-auth/react";
+import Styles from "../../sass/Header.module.scss";
+import React from "react";
+import { CircleUser, User } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   onClickSignin?: () => void;
@@ -15,7 +15,7 @@ export const ProfileButton: React.FC<Props> = ({ onClickSignin }) => {
       {!session ? (
         <button onClick={onClickSignin} className={Styles.Profile}>
           <User size={16} />
-          Log in
+          <span>Log in</span>
         </button>
       ) : (
         <Link href="/profile">
@@ -25,7 +25,7 @@ export const ProfileButton: React.FC<Props> = ({ onClickSignin }) => {
             ) : (
               <CircleUser size={20} />
             )}
-            Profile
+            <span>Profile</span>
           </button>
         </Link>
       )}

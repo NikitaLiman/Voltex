@@ -27,7 +27,7 @@
             margin-bottom: 10px;
 
             &::before {
-              content: '';
+              content: "";
               max-width: 700px;
               width: 100%;
               height: 1px;
@@ -54,7 +54,7 @@
             position: relative;
 
             &::before {
-              content: '';
+              content: "";
               color: #3e77aa;
               position: absolute;
               left: 0;
@@ -154,6 +154,100 @@
             scale: 0.99;
           }
         }
+      }
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .container {
+    height: 100%;
+    &__content {
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+      gap: 10px;
+      position: relative;
+      .boxInfo {
+        padding: 20px 0;
+        flex: 1;
+
+        .renderComponent {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 20px;
+          .divWidth {
+            max-width: 700px;
+            width: 100%;
+            h3 {
+              position: relative;
+              flex: 1;
+              font-weight: 600;
+              font-size: 18px;
+              color: #333;
+              margin-bottom: 10px;
+
+              &::before {
+                content: "";
+                max-width: 700px;
+                width: 100%;
+                height: 1px;
+                background-color: rgba(128, 128, 128, 0.4);
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+              }
+            }
+          }
+
+          ul {
+            margin-top: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            li {
+              color: #3e77aa;
+              font-size: 14px;
+              max-width: 430px;
+              text-align: left;
+              padding-left: 20px;
+              position: relative;
+
+              &::before {
+                content: "";
+                color: #3e77aa;
+                position: absolute;
+                left: 0;
+                font-size: 18px;
+                top: 0;
+              }
+            }
+          }
+        }
+
+        .specifications {
+          margin-top: 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+
+          &__boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            h1 {
+              font-weight: 700;
+              font-size: 18px;
+              color: #333;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+      .Sticky {
+        display: none;
       }
     }
   }

@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '../../../../../prisma/prisma-client';
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "../../../../../prisma/prisma-client";
 
 export async function GET(req: NextRequest) {
-  const query = req.nextUrl.searchParams.get('query') || '';
+  const query = req.nextUrl.searchParams.get("query") || "";
 
   const Product = await prisma.product.findMany({
     include: {
@@ -11,10 +11,10 @@ export async function GET(req: NextRequest) {
     where: {
       name: {
         contains: query,
-        mode: 'insensitive',
+        mode: "insensitive",
       },
     },
-    take: 4,
+    take: 3,
   });
 
   return NextResponse.json(Product);

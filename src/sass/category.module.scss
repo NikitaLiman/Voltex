@@ -26,3 +26,52 @@
     }
   }
 }
+@media (max-width: 575px) {
+  .container {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+    background-color: black;
+    padding: 5px;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) black;
+
+    ul {
+      display: flex;
+      gap: 10px;
+      white-space: nowrap;
+      padding-bottom: 5px;
+
+      li {
+        cursor: pointer;
+        letter-spacing: 1.5px;
+        border-radius: 10px;
+        padding: 5px 5px;
+
+        a {
+          color: white;
+          font-size: 14px;
+        }
+      }
+
+      .active {
+        a {
+          color: var(--color-accent);
+          font-weight: 700;
+        }
+        background-color: white;
+      }
+    }
+  }
+
+  .container::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .container::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 5px;
+  }
+}

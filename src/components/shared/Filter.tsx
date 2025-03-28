@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Styles from '../../sass/Filter.module.scss';
-import { CheckboxFilterGroup } from './checkbox-filter-group';
-import { useFilter } from '@/store/useFilter';
-import qs from 'qs';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React from "react";
+import Styles from "../../sass/Filter.module.scss";
+import { CheckboxFilterGroup } from "./checkbox-filter-group";
+import { useFilter } from "@/store/useFilter";
+import qs from "qs";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface QueryFilterProps {
   items: string[];
@@ -13,9 +13,12 @@ interface QueryFilterProps {
 
 export const Filter = () => {
   const router = useRouter();
-  const searchParams = useSearchParams() as unknown as Map<keyof QueryFilterProps, string>;
+  const searchParams = useSearchParams() as unknown as Map<
+    keyof QueryFilterProps,
+    string
+  >;
   const { items, loading, onAddId, selectedFilters } = useFilter(
-    searchParams.get('items')?.split(','),
+    searchParams.get("items")?.split(",")
   );
 
   const filteredGroups = items.reduce((acc, cur) => {
@@ -33,7 +36,7 @@ export const Filter = () => {
       items: Array.from(selectedFilters),
     };
     const query = qs.stringify(filters, {
-      arrayFormat: 'comma',
+      arrayFormat: "comma",
     });
     router.push(`?${query}`, {
       scroll: false,
@@ -43,10 +46,11 @@ export const Filter = () => {
     return (
       <div className={Styles.container}>
         <h1>Filters</h1>
-        {/* Скелетоны для загрузки */}
         {...new Array(22)
           .fill(0)
-          .map((_, index) => <div key={index} className={Styles.skeleton}></div>)}
+          .map((_, index) => (
+            <div key={index} className={Styles.skeleton}></div>
+          ))}
       </div>
     );
   }

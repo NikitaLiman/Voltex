@@ -94,7 +94,7 @@ model Characteristics {
 model Filter {
   id       Int             @id @default(autoincrement())
   name     String
-  type     String          // Тип фильтра (Memory, Color и т.д.)
+  type     String          
   products ProductFilter[]
 }
 

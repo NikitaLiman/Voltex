@@ -5,7 +5,7 @@
   position: relative;
   cursor: pointer;
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     width: 25px;
     height: 25px;
     appearance: none;
@@ -17,11 +17,11 @@
     justify-content: center;
 
     &:checked {
-      background-color: var(--color-accent); /* Фон при активном состоянии */
+      background-color: var(--color-accent);
       position: relative;
     }
     &::after {
-      content: '✔';
+      content: "✔";
       color: white;
       font-size: 16px;
       display: block;

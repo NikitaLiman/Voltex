@@ -1,17 +1,17 @@
-import { Container, Header } from '@/components/shared';
-import styles from './page.module.scss';
-import { TopBar } from '@/components/shared/top-bar';
-import { Filter } from '@/components/shared/Filter';
+import { Container, Header } from "@/components/shared";
+import styles from "./page.module.scss";
+import { TopBar } from "@/components/shared/top-bar";
+import { Filter } from "@/components/shared/Filter";
 
-import { Catalog } from '@/components/shared/Catalog';
-import { FindProduct, GetSearchParams } from '../../lib/find-product';
+import { Catalog } from "@/components/shared/Catalog";
+import { FindProduct, GetSearchParams } from "../../lib/find-product";
 
 interface PageProps {
-  searchParams: Promise<GetSearchParams>; // Тип searchParams изменен на Promise<GetSearchParams>
+  searchParams: Promise<GetSearchParams>;
 }
 
 export default async function Home({ searchParams }: PageProps) {
-  const params = await searchParams; // Разрешение промиса
+  const params = await searchParams;
   const categories = await FindProduct(params);
 
   return (
@@ -19,7 +19,7 @@ export default async function Home({ searchParams }: PageProps) {
       <Header />
       <Container className={styles.container__content}>
         <h1>Catalog</h1>
-      </Container>{' '}
+      </Container>{" "}
       <TopBar />
       <Container className={styles.MainPart}>
         <div className={styles.filters}>

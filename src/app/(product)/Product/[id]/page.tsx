@@ -1,9 +1,9 @@
-import React from 'react';
-import { prisma } from '../../../../../prisma/prisma-client';
-import { Container } from '@/components/shared';
-import Styles from '@/sass/pagePop.module.scss';
-import { ColorProps, Sticky } from '@/components/ui/sticky';
-import { PageProps } from '../../../../../.next/types/app/(product)/Product/[id]/Characteristics/page';
+import React from "react";
+import { prisma } from "../../../../../prisma/prisma-client";
+import { Container } from "@/components/shared";
+import Styles from "@/sass/pagePop.module.scss";
+import { ColorProps, Sticky } from "@/components/ui/sticky";
+import { PageProps } from "../../../../../.next/types/app/(product)/Product/[id]/Characteristics/page";
 
 export default async function Page({ params }: PageProps) {
   const { id } = await params;
@@ -22,7 +22,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <Container className={Styles.container}>
-        {' '}
+        {" "}
         <div className={Styles.container__content}>
           <Sticky
             name={product?.name}
