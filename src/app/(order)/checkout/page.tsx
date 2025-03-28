@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Styles from '../../../sass/order.module.scss';
-import { ChevronRight } from 'lucide-react';
-import { useCartStore } from '@/store/cart';
-import { FormInput } from '@/components/shared/form-components/form-input';
+import React from "react";
+import Styles from "../../../sass/order.module.scss";
+import { ChevronRight } from "lucide-react";
+import { useCartStore } from "@/store/cart";
+import { FormInput } from "@/components/shared/form-components/form-input";
 
-import { FormProvider, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
   checkoutFormSchema,
   CheckoutFormValues,
-} from '@/components/shared/form-components/schemas/checkout-form-schema';
-import { SkeletonCheckOut } from '@/components/ui/Skeletons/skeletonCheckout';
-import { createOrder } from '@/app/actions';
-import toast from 'react-hot-toast';
-import Link from 'next/link';
+} from "@/components/shared/form-components/schemas/checkout-form-schema";
+import { SkeletonCheckOut } from "@/components/ui/Skeletons/skeletonCheckout";
+import { createOrder } from "@/app/actions";
+import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function CheckOut() {
   const item = useCartStore((State) => State.items);
@@ -27,10 +27,10 @@ export default function CheckOut() {
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      Mail: '',
-      FirstName: '',
-      SecondName: '',
-      Phone: '',
+      Mail: "",
+      FirstName: "",
+      SecondName: "",
+      Phone: "",
     },
   });
 
@@ -39,18 +39,20 @@ export default function CheckOut() {
       setSubmitting(true);
       const url = await createOrder(data);
 
-      toast.success('Order came well!');
+      toast.success("Order came well!");
 
       if (url) {
         location.href = url;
       }
     } catch (error) {
       console.log(error);
-      toast.error('Error to create Order');
+      toast.error("Error to create Order");
       setSubmitting(false);
     }
   };
-  const SkeletonScreen = [...new Array(1)].map((_, index) => <SkeletonCheckOut key={index} />);
+  const SkeletonScreen = [...new Array(1)].map((_, index) => (
+    <SkeletonCheckOut key={index} />
+  ));
   const fetchCart = useCartStore.getState().fetchCartItems;
   React.useEffect(() => {
     fetchCart();
@@ -73,18 +75,27 @@ export default function CheckOut() {
                       placeholder="FirstName"
                       required={true}
                     />
-                  </div>{' '}
+                  </div>{" "}
                   <div className={Styles.Mail}>
-                    <FormInput name="Mail" placeholder="E-mail" label="E-mail" required={true} />
-                  </div>{' '}
+                    <FormInput
+                      name="Mail"
+                      placeholder="E-mail"
+                      label="E-mail"
+                      required={true}
+                    />
+                  </div>{" "}
                   <div className={Styles.SecondName}>
-                    <FormInput label="SecondName" name="SecondName" placeholder="SecondName" />
-                  </div>{' '}
+                    <FormInput
+                      label="SecondName"
+                      name="SecondName"
+                      placeholder="SecondName"
+                    />
+                  </div>{" "}
                   <div className={Styles.Phone}>
                     <FormInput label="Phone" name="Phone" placeholder="Phone" />
                   </div>
                 </div>
-              </div>{' '}
+              </div>{" "}
             </div>
             <div className={Styles.mainProduct}>
               <div className={Styles.ProductInfo}>
@@ -97,7 +108,7 @@ export default function CheckOut() {
                     )}
                   </div>
                   <div className={Styles.edit}>
-                    {' '}
+                    {" "}
                     <Link href="/Cart">
                       <p>Edit products </p>
                     </Link>
@@ -113,14 +124,24 @@ export default function CheckOut() {
                     : item?.map((item, index) => (
                         <div key={index} className={Styles.scroll__product}>
                           <div className={Styles.imageUrl}>
-                            <img src={item.variations.color[item.selectedColor].images[0]} alt="" />
+                            <img
+                              src={
+                                item.variations.color[item.selectedColor]
+                                  .images[0]
+                              }
+                              alt=""
+                            />
                           </div>
                           <div className={Styles.scroll__product__text}>
                             <div>
-                              <p>{item.variations.product.name}</p> <p>{item.quanity} item</p>
+                              <p>{item.variations.product.name}</p>{" "}
+                              <p>{item.quanity} item</p>
                             </div>
                             <div>
-                              <p>{item.variations.price[item.selectedVariation]} $</p>
+                              <p>
+                                {item.variations.price[item.selectedVariation]}{" "}
+                                $
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -135,10 +156,19 @@ export default function CheckOut() {
                     <p>{item?.length} Products in Cart</p>
                   )}
                 </div>
-                <h2>{loading ? <div className={Styles.loadingTA}></div> : <>{totalAmount} $</>}</h2>
+                <h2>
+                  {loading ? (
+                    <div className={Styles.loadingTA}></div>
+                  ) : (
+                    <>{totalAmount} $</>
+                  )}
+                </h2>
               </div>
               <div className={Styles.submitButton}>
-                <button className={submitting ? Styles.submitting : ''} type="submit">
+                <button
+                  className={submitting ? Styles.submitting : ""}
+                  type="submit"
+                >
                   Buy
                 </button>
               </div>
