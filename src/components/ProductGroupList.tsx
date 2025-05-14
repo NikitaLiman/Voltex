@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Styles from '../../sass/ProductGroupList.module.scss';
-import { Card } from './Card';
-import { useIntersection } from 'react-use';
-import { useDispatch } from 'react-redux';
-import { ActiveId } from '@/Redux/slices/category';
+import React from "react";
+import Styles from "../sass/ProductGroupList.module.scss";
+import { Card } from "./Card";
+import { useIntersection } from "react-use";
+import { useDispatch } from "react-redux";
+import { ActiveId } from "@/Redux/slices/category";
 
 interface Props {
   title: string;
@@ -14,11 +14,17 @@ interface Props {
   categoryId: number;
 }
 
-export const ProductGroupList: React.FC<Props> = ({ title, items, categoryId }) => {
+export const ProductGroupList: React.FC<Props> = ({
+  title,
+  items,
+  categoryId,
+}) => {
   const dispatch = useDispatch();
-  const InterceptionRef = React.useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  const InterceptionRef = React.useRef<HTMLDivElement>(
+    null as unknown as HTMLDivElement
+  );
   const intersection = useIntersection(InterceptionRef, {
-    threshold: 1,
+    threshold: 0.5,
   });
   React.useEffect(() => {
     if (intersection?.isIntersecting) {
@@ -27,7 +33,7 @@ export const ProductGroupList: React.FC<Props> = ({ title, items, categoryId }) 
   }, [categoryId, title, intersection?.isIntersecting]);
   return (
     <div className={Styles.container} id={title} ref={InterceptionRef}>
-      <h1 style={{ padding: '10px 0' }}>{title}</h1>
+      <h1 style={{ padding: "10px 0" }}>{title}</h1>
       <div className={Styles.container__content}>
         {items.map((item) => (
           <Card

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 interface categoryState {
   activeId: number;
@@ -9,13 +9,12 @@ const initialState: categoryState = {
 };
 
 const CategorySlice = createSlice({
-  name: 'counter',
+  name: "category",
   initialState,
   reducers: {
     ActiveId: (state, action) => {
-      const { title, categoryId } = action.payload;
+      const { categoryId } = action.payload;
       state.activeId = categoryId;
-      console.log(title);
     },
   },
 });

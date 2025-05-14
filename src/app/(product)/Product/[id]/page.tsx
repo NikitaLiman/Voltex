@@ -1,8 +1,9 @@
 import React from "react";
 import { prisma } from "../../../../../prisma/prisma-client";
-import { Container } from "@/components/shared";
+import { Container } from "@/components";
 import Styles from "@/sass/pagePop.module.scss";
-import { ColorProps, Sticky } from "@/components/ui/sticky";
+import { Sticky } from "@/components/index";
+import { ColorProps } from "@/components/sticky";
 import { PageProps } from "../../../../../.next/types/app/(product)/Product/[id]/Characteristics/page";
 
 export default async function Page({ params }: PageProps) {

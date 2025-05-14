@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import Styles from "../../sass/Header.module.scss";
+import Styles from "../sass/Header.module.scss";
 import React from "react";
 import { CircleUser, User } from "lucide-react";
 import Link from "next/link";

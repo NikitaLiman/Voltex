@@ -1,9 +1,9 @@
-import { Container, Header } from "@/components/shared";
+import { Container, Header } from "../components";
 import styles from "./page.module.scss";
-import { TopBar } from "@/components/shared/top-bar";
-import { Filter } from "@/components/shared/Filter";
+import { TopBar } from "../components/top-bar";
+import { Filter } from "../components/Filter";
 
-import { Catalog } from "@/components/shared/Catalog";
+import { Catalog } from "../components/Catalog";
 import { FindProduct, GetSearchParams } from "../../lib/find-product";
 
 interface PageProps {

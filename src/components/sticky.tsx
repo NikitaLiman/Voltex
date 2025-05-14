@@ -1,16 +1,22 @@
-'use client';
-import React from 'react';
-import '../../sass/SassComp/sticky.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import Image from 'next/image';
+"use client";
+import React from "react";
+import "../sass/SassComp/sticky.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import Image from "next/image";
 
-import 'swiper/swiper-bundle.css';
-import { Check, CreditCard, ShieldCheck, ShoppingCart, Star } from 'lucide-react';
-import { Recommendation } from '@prisma/client';
-import { CartDrawer } from './cart-drawer';
-import { useCartStore } from '@/store/cart';
-import Link from 'next/link';
+import "swiper/swiper-bundle.css";
+import {
+  Check,
+  CreditCard,
+  ShieldCheck,
+  ShoppingCart,
+  Star,
+} from "lucide-react";
+import { Recommendation } from "@prisma/client";
+import { CartDrawer } from "../ui/cart-drawer";
+import { useCartStore } from "@/store/cart";
+import Link from "next/link";
 
 interface Props {
   colorArr?: ColorProps[] | undefined;
@@ -74,11 +80,11 @@ export const Sticky: React.FC<Props> = ({
   const idItem = Number(id);
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
   const listLogos = [
-    'https://cdn.comfy.ua/media/media/icons/apple-pay.svg',
-    'https://cdn.comfy.ua/media/media/icons/google-pay.svg',
-    'https://cdn.comfy.ua/media/media/icons/private-pay.svg',
-    'https://cdn.comfy.ua/media/media/icons/mastercard.svg',
-    'https://cdn.comfy.ua/media/media/icons/visa.svg',
+    "https://cdn.comfy.ua/media/media/icons/apple-pay.svg",
+    "https://cdn.comfy.ua/media/media/icons/google-pay.svg",
+    "https://cdn.comfy.ua/media/media/icons/private-pay.svg",
+    "https://cdn.comfy.ua/media/media/icons/mastercard.svg",
+    "https://cdn.comfy.ua/media/media/icons/visa.svg",
   ];
   return (
     <>
@@ -92,7 +98,8 @@ export const Sticky: React.FC<Props> = ({
               navigation={true}
               slidesPerView={1}
               speed={0}
-              onSlideChange={(swiper) => setactiveSlide(swiper.activeIndex)}>
+              onSlideChange={(swiper) => setactiveSlide(swiper.activeIndex)}
+            >
               {colorArr?.[activeColor]?.images?.length ? (
                 colorArr[activeColor].images.map((item, index) => (
                   <SwiperSlide key={index}>
@@ -108,7 +115,7 @@ export const Sticky: React.FC<Props> = ({
             {colorArr?.[activeColor]?.images.map((item, index) => (
               <img
                 onClick={() => handleImageClick(index)}
-                className={activeSlide === index ? 'active' : ''}
+                className={activeSlide === index ? "active" : ""}
                 key={index}
                 src={item}
                 alt=""
@@ -145,35 +152,40 @@ export const Sticky: React.FC<Props> = ({
                       <img src={recommendation[0]?.imageUrl} alt="" />
                     </div>
                     <div className="Recommendation__block__content__text">
-                      <h2 style={{ color: '#000000' }}>Reccomend</h2>
-                      <p style={{ color: '#000000' }}>{recommendation[0]?.name}</p>
+                      <h2 style={{ color: "#000000" }}>Reccomend</h2>
+                      <p style={{ color: "#000000" }}>
+                        {recommendation[0]?.name}
+                      </p>
                     </div>
                   </div>
 
                   <div className="price">
-                    <p style={{ color: '#000000' }}>{recommendation[0]?.price} $</p>
+                    <p style={{ color: "#000000" }}>
+                      {recommendation[0]?.price} $
+                    </p>
                   </div>
                 </div>
               </Link>
             </div>
           ) : (
-            ''
+            ""
           )}
 
           <div className="colorBlock">
             <div className="ChosenColor">
-              color: <b>{colorArr?.[selectedColor]?.nameColor}</b>{' '}
+              color: <b>{colorArr?.[selectedColor]?.nameColor}</b>{" "}
             </div>
             <div className="RowColors">
               {colorArr?.map((item, index) => (
                 <div
-                  className={activeColor === index ? 'active' : 'BoxColors'}
+                  className={activeColor === index ? "active" : "BoxColors"}
                   onClick={() => {
                     handleColorChange(index);
                     addColor(index);
                   }}
                   key={index}
-                  style={{ backgroundColor: item.color }}></div>
+                  style={{ backgroundColor: item.color }}
+                ></div>
               ))}
             </div>
           </div>
@@ -184,13 +196,14 @@ export const Sticky: React.FC<Props> = ({
             <ul>
               {varitaions?.map((item, index) => (
                 <li
-                  className={activeVar === index ? 'active' : ''}
+                  className={activeVar === index ? "active" : ""}
                   onClick={() => {
                     handleChange(index);
                     PriceChange(index);
                     addVar(index);
                   }}
-                  key={index}>
+                  key={index}
+                >
                   {item}
                 </li>
               ))}
@@ -199,7 +212,8 @@ export const Sticky: React.FC<Props> = ({
           <div className="Banner">
             <p>Create a magical New Year together with us!</p>
             <h1>
-              Delight your loved ones with gifts that will make their lives easier and bring joy!
+              Delight your loved ones with gifts that will make their lives
+              easier and bring joy!
             </h1>
           </div>
           <div className="SellBox">
@@ -212,7 +226,8 @@ export const Sticky: React.FC<Props> = ({
                 <button
                   onClick={() => {
                     toggleDrawer();
-                  }}>
+                  }}
+                >
                   <Check />
                   Go to cart
                 </button>
@@ -220,7 +235,8 @@ export const Sticky: React.FC<Props> = ({
                 <button
                   onClick={() => {
                     toggleDrawer();
-                  }}>
+                  }}
+                >
                   <ShoppingCart size={20} color="white" />
                   Buy
                 </button>
@@ -231,7 +247,10 @@ export const Sticky: React.FC<Props> = ({
             <div className="payment__content">
               <CreditCard color="#4caf50" />
               <div className="payment__content__box">
-                <p>Pay for the purchase with cash, card or bank transfer (cashless)</p>
+                <p>
+                  Pay for the purchase with cash, card or bank transfer
+                  (cashless)
+                </p>
                 <div className="payment__content__box__content">
                   {listLogos.map((logo, index) => (
                     <div key={index} className="logosbox">
@@ -244,13 +263,13 @@ export const Sticky: React.FC<Props> = ({
             <div className="ShieldCheck">
               <ShieldCheck color="#4caf50" />
               <p>
-                All equipment has certificates and guarantees from the manufacturer. You can return
-                it within 14 days after purchase
+                All equipment has certificates and guarantees from the
+                manufacturer. You can return it within 14 days after purchase
               </p>
             </div>
           </div>
         </div>
-      </div>{' '}
+      </div>{" "}
       <CartDrawer
         activeVar={selectedPrice}
         selectedPrice={selectedPrice}

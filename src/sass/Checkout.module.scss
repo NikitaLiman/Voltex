@@ -100,6 +100,11 @@
                 display: flex;
                 flex-direction: column;
               }
+              .price {
+                p {
+                  width: 46px;
+                }
+              }
             }
             button {
               display: flex;

@@ -1,11 +1,18 @@
 .container {
+  .contBox {
+    border-bottom: solid 2px black;
+    padding: 18px 0;
+    @media (max-width: 1080px) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
   .cont {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 32px 0;
-    border-bottom: solid 1px black;
 
     &__LogoBlock {
       display: flex;
@@ -26,11 +33,33 @@
           font-size: 14px;
         }
       }
+      @media (max-width: 530px) {
+        display: inline-block;
+        padding: 5px;
+        img {
+          display: none;
+        }
+        &__Text {
+          h1 {
+            color: white;
+            font-weight: 900;
+            font-size: 14px;
+            text-align: center;
+          }
+          p {
+            display: none;
+          }
+        }
+      }
     }
     .Search {
       flex: 1;
       margin: 0px 50px;
+      @media (max-width: 1080px) {
+        display: none;
+      }
     }
+
     .ButtonBox {
       display: flex;
       padding: 0px 5px;
@@ -175,6 +204,12 @@
       }
     }
   }
+  .SearchMedia {
+    display: none;
+    @media (max-width: 1080px) {
+      display: block;
+    }
+  }
 }
 .popUp {
   padding: 10px;
@@ -245,362 +280,6 @@
         color: black;
         font-weight: 700;
         font-size: 24px;
-      }
-    }
-  }
-}
-
-@media (max-width: 1080px) {
-  .container {
-    .cont {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 32px 0;
-      border-bottom: solid 1px black;
-
-      &__LogoBlock {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        width: fit-content;
-        padding: 0.4rem;
-        border-radius: 5px;
-        &__Text {
-          display: none;
-          h1 {
-            color: white;
-            font-weight: 900;
-          }
-          p {
-            color: gray;
-            opacity: 0.9;
-            font-size: 14px;
-          }
-        }
-      }
-      .Search {
-        flex: 1;
-        margin: 0px;
-      }
-      .ButtonBox {
-        display: flex;
-        padding: 0px 5px;
-        gap: 20px;
-        .Profile {
-          min-width: 110px;
-          height: 31px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          border: solid 1px black;
-          padding: 5px 15px;
-          border-radius: 15px;
-          background-color: transparent;
-          color: black;
-          font-weight: 500;
-          img {
-            border-radius: 100%;
-            width: 20px;
-            height: 20px;
-          }
-          &:hover {
-            scale: 1.02;
-          }
-          &:active {
-            scale: 0.98;
-          }
-        }
-        .loading {
-          position: relative;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 5px 15px;
-          border-radius: 20px;
-          animation: Skeleton 1.5s infinite;
-
-          span {
-            height: 15px;
-            background-color: gray;
-            width: 2px;
-          }
-          b {
-            opacity: 0;
-          }
-          .cartBox {
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: opacity 0.3s ease;
-          }
-
-          .Visible {
-            position: absolute;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            opacity: 0;
-            left: -70%;
-            transform: translateX(0);
-          }
-
-          &:hover {
-            transform: scale(1.01);
-
-            .cartBox {
-              opacity: 0;
-            }
-
-            .Visible {
-              opacity: 1;
-              left: 10px;
-              transform: translateX(0);
-            }
-          }
-
-          &:active {
-            transform: scale(0.98);
-            background-color: black;
-          }
-
-          @keyframes Skeleton {
-            0% {
-              background-color: gray;
-            }
-            50% {
-              background-color: lightgray;
-            }
-            100% {
-              background-color: gray;
-            }
-          }
-
-          span {
-            animation: Skeleton 1.5s infinite;
-          }
-        }
-        .cart {
-          position: relative;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          border: solid 1px black;
-          padding: 5px 15px;
-          border-radius: 20px;
-          min-width: 123px;
-          color: var(--text-primary);
-          background-color: var(--background-secondary);
-          span {
-            height: 15px;
-            background-color: gray;
-            width: 2px;
-          }
-          .cartBox {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s ease;
-          }
-          .Visible {
-            position: absolute;
-            transition: 0.3s ease;
-            opacity: 0;
-            right: 10px;
-            transform: translateX(-70%);
-          }
-          &:hover {
-            scale: 1.01;
-
-            .cartBox {
-              opacity: 0;
-              transition: 0.3s ease;
-            }
-            .Visible {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-          &:active {
-            scale: 0.98;
-            background-color: black;
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 750px) {
-  .container {
-    .cont {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 32px 0;
-      border-bottom: solid 1px black;
-
-      &__LogoBlock {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        width: fit-content;
-        padding: 0.4rem;
-        border-radius: 5px;
-        &__Text {
-          display: none;
-          h1 {
-            color: white;
-            font-weight: 900;
-          }
-          p {
-            color: gray;
-            opacity: 0.9;
-            font-size: 14px;
-          }
-        }
-      }
-      .Search {
-        flex: 1;
-        margin: 0px;
-      }
-      .ButtonBox {
-        display: flex;
-        padding: 0px 5px;
-        gap: 20px;
-        .Profile {
-          min-width: 0px;
-          width: 45px;
-          height: 45px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          border: solid 1px black;
-          border-radius: 100%;
-          background-color: transparent;
-
-          span {
-            display: none;
-            color: black;
-            font-weight: 500;
-          }
-          img {
-            border-radius: 100%;
-            width: 20px;
-            height: 20px;
-          }
-          &:hover {
-            scale: 1.02;
-          }
-          &:active {
-            scale: 0.98;
-          }
-        }
-        .loading {
-          position: relative;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 5px 15px;
-          border-radius: 20px;
-          animation: Skeleton 1.5s infinite;
-
-          span {
-            height: 15px;
-            background-color: gray;
-            width: 2px;
-          }
-          b {
-            opacity: 0;
-          }
-          .cartBox {
-            opacity: 0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: opacity 0.3s ease;
-          }
-
-          .Visible {
-            position: absolute;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            opacity: 0;
-            left: -70%;
-            transform: translateX(0);
-          }
-
-          &:hover {
-            transform: scale(1.01);
-
-            .cartBox {
-              opacity: 0;
-            }
-
-            .Visible {
-              opacity: 1;
-              left: 10px;
-              transform: translateX(0);
-            }
-          }
-
-          &:active {
-            transform: scale(0.98);
-            background-color: black;
-          }
-
-          @keyframes Skeleton {
-            0% {
-              background-color: gray;
-            }
-            50% {
-              background-color: lightgray;
-            }
-            100% {
-              background-color: gray;
-            }
-          }
-
-          span {
-            animation: Skeleton 1.5s infinite;
-          }
-        }
-        .cart {
-          min-width: 0px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 50px; // Размер кнопки
-          height: 50px;
-          border-radius: 100%; // Делаем кнопку круглой
-          background-color: var(--background-secondary);
-          border: solid 1px black;
-          position: relative;
-          cursor: pointer;
-          transition: 0.3s ease;
-
-          .cartBox {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          b {
-            display: none; // Убираем сумму
-          }
-
-          span {
-            display: none; // Убираем разделительную линию
-          }
-
-          &:hover {
-            transform: scale(1.05);
-          }
-
-          &:active {
-            transform: scale(0.95);
-            background-color: black;
-          }
-        }
       }
     }
   }

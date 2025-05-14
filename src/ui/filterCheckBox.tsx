@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Styles from '../../sass/SassComp/FilterCheckBox.module.scss';
+import React from "react";
+import Styles from "../sass/SassComp/FilterCheckBox.module.scss";
 
 export interface CheckBoxFilterProps {
   text: string;

@@ -4,7 +4,7 @@ import React from "react";
 import Styles from "../../../sass/order.module.scss";
 import { ChevronRight } from "lucide-react";
 import { useCartStore } from "@/store/cart";
-import { FormInput } from "@/components/shared/form-components/form-input";
+import { FormInput } from "@/components/auth-models/form-components/index";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,8 +12,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   checkoutFormSchema,
   CheckoutFormValues,
-} from "@/components/shared/form-components/schemas/checkout-form-schema";
-import { SkeletonCheckOut } from "@/components/ui/Skeletons/skeletonCheckout";
+} from "@/components/auth-models/form-components/schemas/index";
+import { SkeletonCheckOut } from "@/ui/Skeletons/skeletonCheckout";
 import { createOrder } from "@/app/actions";
 import toast from "react-hot-toast";
 import Link from "next/link";

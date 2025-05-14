@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { CheckBoxFilterProps, FilterCheckBox } from '../ui/filterCheckBox';
-import Styles from '../../sass/SassComp/CFG.module.scss';
+import React from "react";
+import { CheckBoxFilterProps, FilterCheckBox } from "../ui/filterCheckBox";
+import Styles from "../sass/SassComp/CFG.module.scss";
 
 type item = CheckBoxFilterProps;
 
@@ -22,12 +22,12 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
   items,
   defaultItems,
   limit,
-  searchinputBox = 'Search..',
+  searchinputBox = "Search..",
   selectedIds,
   onChangeBox,
 }) => {
   const [showAll, setShowAll] = React.useState<boolean>(false);
-  const [value, setValue] = React.useState<string>('');
+  const [value, setValue] = React.useState<string>("");
 
   const list = showAll
     ? items.filter((item) => item.text.includes(value.toLocaleLowerCase()))
@@ -42,7 +42,10 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
       <h1>{title}</h1>
       {showAll && (
         <div className={Styles.container__search}>
-          <input placeholder={searchinputBox} onChange={(e) => SearchInput(e.target.value)} />
+          <input
+            placeholder={searchinputBox}
+            onChange={(e) => SearchInput(e.target.value)}
+          />
         </div>
       )}
       <div className={Styles.container__content}>
@@ -56,11 +59,13 @@ export const CheckboxFilterGroup: React.FC<Props> = ({
               checked={selectedIds?.has(String(item.value))}
               onCheckedChange={() => onChangeBox?.(String(item.value))}
             />
-          ))}{' '}
+          ))}{" "}
         </div>
         {items.length > limit && (
           <div>
-            <p onClick={() => setShowAll(!showAll)}>{showAll ? 'Less..' : '+ Show All'}</p>
+            <p onClick={() => setShowAll(!showAll)}>
+              {showAll ? "Less.." : "+ Show All"}
+            </p>
           </div>
         )}
       </div>

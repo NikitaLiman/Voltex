@@ -1,13 +1,13 @@
-'use client';
-import Link from 'next/link';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import '../../sass/Card.scss';
-import 'swiper/swiper-bundle.css';
-import { ShoppingCart } from 'lucide-react';
-import { Pagination } from 'swiper/modules';
-import { CartDrawer } from '../ui/cart-drawer';
-import { useCartStore } from '@/store/cart';
+"use client";
+import Link from "next/link";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "../sass/Card.scss";
+import "swiper/swiper-bundle.css";
+import { ShoppingCart } from "lucide-react";
+import { Pagination } from "swiper/modules";
+import { CartDrawer } from "../ui/cart-drawer";
+import { useCartStore } from "@/store/cart";
 
 interface Props {
   id: number;
@@ -54,14 +54,14 @@ export const Card: React.FC<Props> = ({
     setDrawerOpen(!isDrawerOpen);
   };
   const categories = [
-    { name: 'Phones', type: 'Internal Memory' },
-    { name: 'Laptops', type: 'RAM' },
-    { name: "TV's & Monitor's", type: 'Quality' },
-    { name: 'Peripherals Devices', type: 'Audio Format' },
-    { name: 'Smart Watches', type: 'Storage' },
+    { name: "Phones", type: "Internal Memory" },
+    { name: "Laptops", type: "RAM" },
+    { name: "TV's & Monitor's", type: "Quality" },
+    { name: "Peripherals Devices", type: "Audio Format" },
+    { name: "Smart Watches", type: "Storage" },
   ];
   const category = categories.filter(
-    (a) => a.name.toLocaleLowerCase() === title.toLocaleLowerCase(),
+    (a) => a.name.toLocaleLowerCase() === title.toLocaleLowerCase()
   );
 
   const handleColor = (index: number) => {
@@ -74,19 +74,20 @@ export const Card: React.FC<Props> = ({
   return (
     <>
       <div className="containerCard">
-        {' '}
+        {" "}
         <Link href={`/Product/${id}`}>
-          {' '}
+          {" "}
           <div className="Image">
-            {' '}
+            {" "}
             <Swiper
               ref={swiperRef}
               modules={[Pagination]}
               pagination={true}
               spaceBetween={0}
               speed={0}
-              slidesPerView={1}>
-              {' '}
+              slidesPerView={1}
+            >
+              {" "}
               {product.items[activeModelIndex]?.color[active]?.images
                 ?.slice(0, 3)
                 ?.map((item: string, index: number) => (
@@ -95,20 +96,23 @@ export const Card: React.FC<Props> = ({
                   </SwiperSlide>
                 ))}
             </Swiper>
-          </div>{' '}
+          </div>{" "}
         </Link>
         <div className="colorsCard">
-          {product.items[activeModelIndex]?.color?.map((color: any, index: number) => (
-            <ul key={index}>
-              <li
-                onClick={() => {
-                  handleColor(index);
-                  addColor(index);
-                }}
-                className={active === index ? 'active' : 'color'}
-                style={{ backgroundColor: color.color }}></li>
-            </ul>
-          ))}
+          {product.items[activeModelIndex]?.color?.map(
+            (color: any, index: number) => (
+              <ul key={index}>
+                <li
+                  onClick={() => {
+                    handleColor(index);
+                    addColor(index);
+                  }}
+                  className={active === index ? "active" : "color"}
+                  style={{ backgroundColor: color.color }}
+                ></li>
+              </ul>
+            )
+          )}
           <p></p>
         </div>
         <h1>{name}</h1>
@@ -118,7 +122,8 @@ export const Card: React.FC<Props> = ({
             onClick={() => {
               toggleDrawer();
             }}
-            className="cart">
+            className="cart"
+          >
             <ShoppingCart size={25} color="white" />
           </div>
         </div>
@@ -128,16 +133,17 @@ export const Card: React.FC<Props> = ({
             <ul>
               {variation?.map((variation, index) => (
                 <li
-                  className={activeVar === index ? 'Active' : ''}
+                  className={activeVar === index ? "Active" : ""}
                   onClick={() => handleVar(index)}
-                  key={index}>
+                  key={index}
+                >
                   {variation}
                 </li>
               ))}
             </ul>
             <div className="Display">
               {categoryId === 4 ? (
-                ''
+                ""
               ) : (
                 <p>
                   Display: <span>{display}</span>

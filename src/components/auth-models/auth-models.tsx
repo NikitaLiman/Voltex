@@ -1,26 +1,26 @@
-'use client';
-import React from 'react';
-import Styles from '../../../sass/authModel.module.scss';
-import { X } from 'lucide-react';
-import { signIn } from 'next-auth/react';
-import { LogInForm } from './forms/logIn-form';
-import { RegisterForm } from './forms/register-form';
+"use client";
+import React from "react";
+import Styles from "../../sass/authModel.module.scss";
+import { X } from "lucide-react";
+import { signIn } from "next-auth/react";
+import { LogInForm } from "./forms/logIn-form";
+import { RegisterForm } from "./forms/register-form";
 interface Props {
   onClose: () => void;
 }
 
 export const AuthModel: React.FC<Props> = ({ onClose }) => {
-  const [type, setType] = React.useState<'login' | 'register'>('login');
+  const [type, setType] = React.useState<"login" | "register">("login");
 
   const onSwithType = () => {
-    setType(type === 'login' ? 'register' : 'login');
+    setType(type === "login" ? "register" : "login");
   };
 
   React.useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   });
   const handleClose = () => {
@@ -32,7 +32,7 @@ export const AuthModel: React.FC<Props> = ({ onClose }) => {
         <h1>Sign In</h1>
         <div className={Styles.form__content}>
           <div className={Styles.sigIn}>
-            {type === 'login' ? (
+            {type === "login" ? (
               <LogInForm onClose={handleClose} />
             ) : (
               <RegisterForm onClose={handleClose} />
@@ -41,26 +41,28 @@ export const AuthModel: React.FC<Props> = ({ onClose }) => {
           <div className={Styles.bySocial}>
             <div
               onClick={() =>
-                signIn('github', {
+                signIn("github", {
                   redirect: true,
-                  callbackUrl: '/',
+                  callbackUrl: "/",
                 })
               }
-              className={Styles.github}>
+              className={Styles.github}
+            >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
                 alt=""
               />
               <p>GitHub</p>
-            </div>{' '}
+            </div>{" "}
             <div
               onClick={() =>
-                signIn('google', {
+                signIn("google", {
                   redirect: true,
-                  callbackUrl: '/',
+                  callbackUrl: "/",
                 })
               }
-              className={Styles.Google}>
+              className={Styles.Google}
+            >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
                 alt=""
@@ -71,7 +73,7 @@ export const AuthModel: React.FC<Props> = ({ onClose }) => {
         </div>
         <div className={Styles.btn}>
           <button type="button" onClick={onSwithType}>
-            {type === 'login' ? 'register' : 'login'}
+            {type === "login" ? "register" : "login"}
           </button>
         </div>
         <span>

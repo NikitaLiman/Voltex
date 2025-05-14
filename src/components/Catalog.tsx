@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import styles from '../../app/page.module.scss';
-import { ProductGroupList } from './ProductGroupList';
-import { Product } from '@prisma/client';
+import styles from "../app/page.module.scss";
+import { ProductGroupList } from "./ProductGroupList";
+import { Product } from "@prisma/client";
 
 interface Props {
   categories: {
@@ -13,7 +13,9 @@ interface Props {
 }
 
 export const Catalog: React.FC<Props> = ({ categories }) => {
-  const hasProducts = categories.some((category) => category.product.length > 0);
+  const hasProducts = categories.some(
+    (category) => category.product.length > 0
+  );
 
   return (
     <div className={styles.Products}>
@@ -26,7 +28,7 @@ export const Catalog: React.FC<Props> = ({ categories }) => {
               items={category.product}
               categoryId={category.id}
             />
-          ) : null,
+          ) : null
         )
       ) : (
         <h6>No products available.</h6>

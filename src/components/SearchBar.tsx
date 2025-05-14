@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Styles from "../../sass/Search.module.scss";
+import Styles from "../sass/Search.module.scss";
 import { Search } from "lucide-react";
 import { useClickAway, useDebounce } from "react-use";
 import Image from "next/image";
-import { Api } from "../../../services/api-client";
+import { Api } from "../../services/api-client";
 import Link from "next/link";
 
 interface PropsSearch {

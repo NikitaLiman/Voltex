@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Styles from "../../sass/Filter.module.scss";
+import Styles from "../sass/Filter.module.scss";
 import { CheckboxFilterGroup } from "./checkbox-filter-group";
 import { useFilter } from "@/store/useFilter";
 import qs from "qs";

@@ -1,17 +1,17 @@
-'use server';
+"use server";
 
-import { CheckoutFormValues } from '@/components/shared/form-components/schemas/checkout-form-schema';
-import { prisma } from '../../prisma/prisma-client';
-import { OrderStatus, Prisma } from '@prisma/client';
-import { cookies } from 'next/headers';
-import { CreatePayPalPayment } from '../../lib/create-paymant';
-import { GetUserSession } from '../../lib/get-user-sessiaon';
-import { hashSync } from 'bcrypt';
+import { CheckoutFormValues } from "@/components/auth-models/form-components/schemas/index";
+import { prisma } from "../../prisma/prisma-client";
+import { OrderStatus, Prisma } from "@prisma/client";
+import { cookies } from "next/headers";
+import { CreatePayPalPayment } from "../../lib/create-paymant";
+import { GetUserSession } from "../../lib/get-user-sessiaon";
+import { hashSync } from "bcrypt";
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
     const cookie = cookies();
-    const cartToken = (await cookie).get('token')?.value;
+    const cartToken = (await cookie).get("token")?.value;
 
     if (!cartToken) {
       return;
@@ -35,10 +35,10 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     });
     if (!userCart) {
-      throw new Error('Cart not found');
+      throw new Error("Cart not found");
     }
     if (userCart?.totalAmount === 0) {
-      throw new Error('Cart is epmty');
+      throw new Error("Cart is epmty");
     }
 
     const order = await prisma.order.create({
@@ -47,7 +47,7 @@ export async function createOrder(data: CheckoutFormValues) {
         status: OrderStatus.PENDING,
         items: JSON.stringify(userCart.CartItem),
         totalAmount: userCart.totalAmount,
-        fullname: data.FirstName + ' ' + data.SecondName,
+        fullname: data.FirstName + " " + data.SecondName,
         email: data.Mail,
         phone: data.Phone,
       },
@@ -80,7 +80,7 @@ export async function updateUserInput(body: Prisma.UserUpdateInput) {
     const currentUser = await GetUserSession();
 
     if (!currentUser) {
-      throw new Error('user not found');
+      throw new Error("user not found");
     }
 
     const fintUser = await prisma.user.findFirst({
@@ -94,13 +94,15 @@ export async function updateUserInput(body: Prisma.UserUpdateInput) {
       data: {
         fullname: body.fullname,
         email: body.email,
-        password: body.password ? hashSync(body.password as string, 10) : fintUser?.password,
+        password: body.password
+          ? hashSync(body.password as string, 10)
+          : fintUser?.password,
       },
     });
-    console.log('Updated user:', updatedUser);
+    console.log("Updated user:", updatedUser);
     return updatedUser;
   } catch (error) {
-    console.log('error');
+    console.log("error");
     throw error;
   }
 }
@@ -114,14 +116,14 @@ export async function RegisterUser(body: Prisma.UserCreateInput) {
     });
 
     if (!user) {
-      console.log('no user');
+      console.log("no user");
     }
 
     if (user) {
       if (!user.verified) {
-        throw new Error('Post not registrated');
+        throw new Error("Post not registrated");
       }
-      throw new Error('User registrated');
+      throw new Error("User registrated");
     }
 
     const createUser = await prisma.user.create({

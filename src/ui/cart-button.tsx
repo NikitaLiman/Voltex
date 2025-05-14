@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Styles from '../../sass/Header.module.scss';
-import { ArrowRight, ShoppingCart, X } from 'lucide-react';
-import { useCartStore } from '@/store/cart';
-import { useClickAway } from 'react-use';
-import Link from 'next/link';
+import React from "react";
+import Styles from "../sass/Header.module.scss";
+import { ArrowRight, ShoppingCart, X } from "lucide-react";
+import { useCartStore } from "@/store/cart";
+import { useClickAway } from "react-use";
+import Link from "next/link";
 
 export const CartButton = () => {
   const totalAmount = useCartStore((state) => state?.totalAmount);
@@ -33,11 +33,12 @@ export const CartButton = () => {
   }, [fetchCart]);
   return (
     <>
-      <Link href={hasItems ? 'Cart' : ''}>
+      <Link href={hasItems ? "Cart" : ""}>
         <button
           ref={ref}
           onClick={() => onClick()}
-          className={loading ? Styles.loading : Styles.cart}>
+          className={loading ? Styles.loading : Styles.cart}
+        >
           <b>{totalAmount}$</b>
           <span></span>
           <div className={Styles.cartBox}>

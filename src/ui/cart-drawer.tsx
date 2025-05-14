@@ -1,12 +1,12 @@
-'use client';
-import React from 'react';
-import Styles from '../../sass/SassComp/CartDrawer.module.scss';
-import { Minus, Plus } from 'lucide-react';
-import { ICartItem } from '../../../lib/getCartDetails';
-import { useCartStore } from '@/store/cart';
-import toast from 'react-hot-toast';
-import Skeleton from './Skeletons/skeleton';
-import Link from 'next/link';
+"use client";
+import React from "react";
+import Styles from "../sass/SassComp/CartDrawer.module.scss";
+import { Minus, Plus } from "lucide-react";
+import { ICartItem } from "../../lib/getCartDetails";
+import { useCartStore } from "@/store/cart";
+import toast from "react-hot-toast";
+import Skeleton from "./Skeletons/skeleton";
+import Link from "next/link";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -18,7 +18,13 @@ interface DrawerProps {
   activeVar: number;
 }
 
-export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id, activeVar }) => {
+export const CartDrawer: React.FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  active,
+  id,
+  activeVar,
+}) => {
   const [item, setItem] = React.useState<ICartItem[]>([]);
 
   const fetchCart = async () => {
@@ -49,11 +55,11 @@ export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id,
           selectedVariation: activeVar,
         });
         await fetchCart();
-        toast.success('Added To Cart');
+        toast.success("Added To Cart");
       }
     } catch (error) {
       console.log(error);
-      toast.error('Error');
+      toast.error("Error");
     }
   };
 
@@ -64,7 +70,9 @@ export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id,
     }
   }, [isOpen]);
 
-  const SkeletonScreen = [...new Array(1)].map((_, index) => <Skeleton key={index} />);
+  const SkeletonScreen = [...new Array(1)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
 
   const CurrentItem = React.useMemo(() => {
     return item?.find((cartItem) => cartItem.variationItemId === firstItem);
@@ -76,15 +84,19 @@ export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id,
   const CurrentPrice = CurrentItem?.variations?.price[activeVar];
   const CurrentColor = CurrentItem?.variations?.color[active].nameColor;
   return (
-    <div className={`${Styles.container} ${isOpen ? Styles.open : ''} `} onClick={onClose}>
+    <div
+      className={`${Styles.container} ${isOpen ? Styles.open : ""} `}
+      onClick={onClose}
+    >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`${Styles.drawer} ${isOpen ? Styles.open : ''}`}>
+        className={`${Styles.drawer} ${isOpen ? Styles.open : ""}`}
+      >
         <div onClick={onClose} className={Styles.closeButton}>
           &times;
         </div>
         <div className={Styles.drawer__content}>
-          {' '}
+          {" "}
           <div className={Styles.CartDrawerContainer}>
             <p>The product has been added to the cart</p>
             {loading ? (
@@ -101,7 +113,9 @@ export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id,
                     </p>
                   </div>
                   <div className={Styles.Price}>
-                    <h2>{CurrentPrice || item?.[0]?.variations?.price?.[0]} $</h2>
+                    <h2>
+                      {CurrentPrice || item?.[0]?.variations?.price?.[0]} $
+                    </h2>
                     {item?.map((cartItem) => {
                       if (
                         cartItem.variationItemId === firstItem &&
@@ -111,14 +125,26 @@ export const CartDrawer: React.FC<DrawerProps> = ({ isOpen, onClose, active, id,
                         return (
                           <div key={cartItem.id} className={Styles.controller}>
                             <button
-                              onClick={() => UpdateItemAmount(cartItem.id, cartItem.quanity - 1)}
-                              className={Styles.Minus}>
+                              onClick={() =>
+                                UpdateItemAmount(
+                                  cartItem.id,
+                                  cartItem.quanity - 1
+                                )
+                              }
+                              className={Styles.Minus}
+                            >
                               <Minus />
                             </button>
                             <span>{cartItem.quanity}</span>
                             <button
-                              onClick={() => UpdateItemAmount(cartItem.id, cartItem.quanity + 1)}
-                              className={Styles.Plus}>
+                              onClick={() =>
+                                UpdateItemAmount(
+                                  cartItem.id,
+                                  cartItem.quanity + 1
+                                )
+                              }
+                              className={Styles.Plus}
+                            >
                               <Plus />
                             </button>
                           </div>

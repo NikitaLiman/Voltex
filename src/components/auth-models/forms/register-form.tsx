@@ -1,11 +1,11 @@
-import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { registerSchema, TformRegisterValues } from './schemas';
-import { zodResolver } from '@hookform/resolvers/zod';
-import Styles from '../../../../sass/authModel.module.scss';
-import { FormInput } from '../../form-components/form-input';
-import toast from 'react-hot-toast';
-import { RegisterUser } from '@/app/actions';
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { registerSchema, TformRegisterValues } from "./schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Styles from "../../../sass/authModel.module.scss";
+import { FormInput } from "../form-components/form-input";
+import toast from "react-hot-toast";
+import { RegisterUser } from "@/app/actions";
 
 interface Props {
   onClose: VoidFunction;
@@ -20,19 +20,19 @@ export const RegisterForm: React.FC<Props> = () => {
         password: data.password,
       });
 
-      toast.success('User created!');
+      toast.success("User created!");
     } catch (error) {
       console.log(error);
-      toast.error('User created yet ');
+      toast.error("User created yet ");
     }
   };
   const form = useForm<TformRegisterValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      email: '',
-      password: '',
-      fullname: '',
-      confirmPassword: '',
+      email: "",
+      password: "",
+      fullname: "",
+      confirmPassword: "",
     },
   });
   return (
@@ -48,7 +48,12 @@ export const RegisterForm: React.FC<Props> = () => {
         <div className={Styles.inputs}>
           <FormInput label="Fullname" name="fullname" required={true} />
           <FormInput label="E-Mail" name="email" required={true} />
-          <FormInput label="Password" name="password" required={true} type="password" />
+          <FormInput
+            label="Password"
+            name="password"
+            required={true}
+            type="password"
+          />
           <FormInput
             label="Confirm Password"
             name="confirmPassword"
@@ -58,7 +63,7 @@ export const RegisterForm: React.FC<Props> = () => {
         </div>
 
         <button type="submit" className={Styles.btn}>
-          {form.formState.isSubmitting ? 'Enter..' : 'register'}
+          {form.formState.isSubmitting ? "Enter.." : "register"}
         </button>
       </form>
     </FormProvider>
